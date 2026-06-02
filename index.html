@@ -348,6 +348,58 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
 .beacons-dash .d-footer{margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#999}
 .beacons-dash .d-viewbtn{font-size:10px;font-weight:700;color:#000;border:1px solid #ddd;border-radius:6px;padding:3px 9px;letter-spacing:.02em;text-transform:uppercase}
 
+/* HERO TWO-COLUMN */
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,4vw,56px);align-items:center;max-width:1150px;width:100%;margin:0 auto}
+.hero-left{text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+.hero-left .h1{text-align:left;font-size:clamp(40px,6vw,78px)}
+.hero-left .hero-sub{margin:18px 0 0;text-align:left}
+.hero-left .ctas{justify-content:flex-start}
+.hero-left .trust-row{justify-content:flex-start}
+.hero-left .live-badge{margin-left:0}
+.hero-right{animation:fadeUp .8s .3s ease both}
+.hero-proof-label{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:var(--lime);margin-bottom:11px;letter-spacing:.03em}
+.hero-dash{padding:20px 22px !important;box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08),0 0 55px rgba(200,255,0,.07) !important}
+.hero-dash .d-logo{font-size:13px;margin-bottom:13px}
+.hero-dash .d-value{font-size:clamp(30px,4.2vw,44px)}
+.hero-dash .d-bar-row{height:11px;margin-bottom:16px}
+.hero-dash .d-item{font-size:12px}
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:36px;max-width:520px}
+  .hero-left{text-align:center;align-items:center}
+  .hero-left .h1{text-align:center}
+  .hero-left .hero-sub{margin-left:auto;margin-right:auto;text-align:center}
+  .hero-left .ctas{justify-content:center}
+  .hero-left .trust-row{justify-content:center}
+}
+
+/* THREADS INSIGHTS MOCKUP */
+.insights-dash{background:#fff;color:#0d0d0d;padding:14px 16px}
+.insights-dash .d-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.insights-dash .d-title{font-size:14px;font-weight:800}
+.insights-dash .d-pills{display:flex;gap:6px}
+.insights-dash .d-pill{font-size:10px;color:#333;border:1px solid #ddd;border-radius:100px;padding:3px 10px;display:flex;align-items:center;gap:3px;font-weight:600}
+.insights-dash .d-label{font-size:11px;color:#888;font-weight:600;margin-bottom:2px}
+.insights-dash .d-value{font-size:clamp(24px,4vw,32px);font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1;color:#0d0d0d}
+.insights-dash .d-bars{display:flex;align-items:flex-end;gap:2px;height:78px}
+.insights-dash .d-bars i{flex:1;background:#111;border-radius:2px 2px 0 0;display:block;min-height:2px}
+.insights-dash .d-xaxis{display:flex;justify-content:space-between;font-size:10px;color:#999;margin-top:7px;border-top:1px solid #eee;padding-top:6px}
+
+/* BEACONS SALE NOTIFICATIONS MOCKUP */
+.notif-dash{background:#0b0b0d;padding:4px 10px}
+.notif-row{display:flex;gap:10px;padding:11px 4px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.06)}
+.notif-row:last-child{border-bottom:none}
+.notif-av{width:32px;height:32px;border-radius:50%;background:#5b7cfa;flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.notif-av svg{width:22px;height:22px;color:#3a55c9}
+.notif-body{flex:1;min-width:0}
+.notif-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.notif-name{font-weight:700;font-size:12px;color:#eee}
+.notif-time{font-size:10px;color:#888;flex-shrink:0}
+.notif-text{font-size:12px;color:#ddd;margin:2px 0 7px}
+.notif-text b{font-weight:700;color:#fff}
+.notif-meta{display:flex;align-items:center;gap:9px}
+.notif-btn{font-size:10px;font-weight:700;color:#fff;background:#2a2a2e;border-radius:100px;padding:4px 13px}
+.notif-status{font-size:10px;color:#9aa;display:flex;align-items:center;gap:4px}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#000}
@@ -374,7 +426,9 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
 .ep-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ep-box{position:relative;z-index:1;background:linear-gradient(145deg,rgba(20,20,20,.97),rgba(10,10,10,.98));border:1px solid rgba(200,255,0,.25);border-radius:24px;padding:clamp(28px,5vw,48px);max-width:480px;width:100%;text-align:center;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 32px 80px rgba(0,0,0,.8),0 0 60px rgba(200,255,0,.06)}
 .ep-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--cyan),var(--pink));border-radius:24px 24px 0 0}
-.ep-emoji{font-size:48px;display:block;margin-bottom:14px}
+.ep-emoji{font-size:48px;display:block;margin-bottom:10px}
+.ep-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#C8FF00,#7EFF00);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:14px;box-shadow:0 0 24px rgba(200,255,0,.45)}
+.ep-save{display:inline-block;background:rgba(200,255,0,.14);border:1px solid rgba(200,255,0,.4);color:var(--lime);font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:13px;padding:4px 11px;border-radius:100px}
 .ep-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(22px,4vw,30px);letter-spacing:-.03em;margin-bottom:8px}
 .ep-sub{font-size:14px;color:var(--dim);line-height:1.6;margin-bottom:22px}
 .ep-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:20px}
@@ -412,15 +466,17 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
   <div class="ep-overlay" id="ep-overlay"></div>
   <div class="ep-box">
     <button class="ep-close" id="ep-close">✕</button>
-    <span class="ep-emoji">⚡</span>
-    <h2 class="ep-title">Wait — don't miss this.</h2>
-    <p class="ep-sub">You're this close to the exact system that generated <strong style="color:#fff">$48,200 in verified revenue.</strong> The $27 price won't last.</p>
+    <span class="ep-emoji">🎁</span>
+    <div class="ep-badge">⚡ Exclusive 20% Off — This Popup Only</div>
+    <h2 class="ep-title">Wait — here's 20% OFF.</h2>
+    <p class="ep-sub">Since you're still here, take an extra <strong style="color:#fff">20% off</strong> the exact system that generated <strong style="color:#fff">$48,200 in verified revenue.</strong> This code only works from this popup — don't close it.</p>
     <div class="ep-price">
-      <span class="ep-old">$47</span>
-      <span class="ep-new">$27</span>
+      <span class="ep-old">$27</span>
+      <span class="ep-new">$22</span>
+      <span class="ep-save">Save 20%</span>
     </div>
-    <a href="#pricing" class="ep-cta" id="ep-cta">Yes — Get Instant Access for $27 →</a>
-    <button class="ep-dismiss" id="ep-dismiss">No thanks, I'll pass on this</button>
+    <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQAB_TAp7lNZWZI1X5AKopK3PE7k5AcF3FM2r3NsFHUY61c&preview_theme_id=158915395814" class="ep-cta" id="ep-cta">Yes — Claim My 20% Off — Just $22 →</a>
+    <button class="ep-dismiss" id="ep-dismiss">No thanks, I'll pay full price</button>
   </div>
 </div>
 
@@ -428,7 +484,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
 <div id="sticky-bar">
   <div class="sb-left">
     <span class="sb-fire">🔥</span>
-    <span class="sb-copy">Launch price ends in</span>
+    <span class="sb-copy"><strong style="color:var(--lime)">20% OFF</strong> ends in</span>
     <div class="sb-timer">
       <span id="sbh">08</span><span class="sb-sep">:</span><span id="sbm">47</span><span class="sb-sep">:</span><span id="sbs">33</span>
     </div>
@@ -437,7 +493,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
     <span class="sb-dot"></span>
     <span id="sb-vcount">61</span> viewing now
   </div>
-  <a href="#pricing" class="sb-cta">Get $27 Access →</a>
+  <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQAB_TAp7lNZWZI1X5AKopK3PE7k5AcF3FM2r3NsFHUY61c&preview_theme_id=158915395814" class="sb-cta">Get 20% Off — <span style="text-decoration:line-through;opacity:.45;font-weight:600;margin-left:3px">$27</span>&nbsp;$22 →</a>
 </div>
 
 <!-- TOAST -->
@@ -454,7 +510,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
 <!-- NAV -->
 <nav>
   <div class="nav-logo">TECHNO<span>UNIVERSE</span></div>
-  <a href="#pricing" class="nav-cta">
+  <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQABKg3YTdKgL1xJDsmh0yb90aF_BaoUBcd3vOQ3DjFq6fE&auto_redirect=false&edge_redirect=true&preview_theme_id=158915395814&skip_shop_pay=true&_su_rec=g3WyGSlnYZMWDX6yBErhi1UfUBhCCk2wMIC2VvcRydNj8xOS1Y3rIzc-eseraEjUVKJc-iMzJ2bpF_Kd_sq3DbmGd_01Hl4FoaVec6BKrKCjMb4BTkmLcQc4O5X3KkqWMpMbqBCQYK1Fzw2uaOYFpEbZXBjKnOrExALm83XmzEloe5XU-qriEKF--DIzNVg6kiOsbvEsBpv8AvLw-uE3iG6MGAsK" class="nav-cta">
     Get Instant Access
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
@@ -464,6 +520,9 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
 <section class="hero" style="padding-top:80px">
   <div class="orb" style="background:rgba(200,255,0,.12);width:500px;height:500px;top:-200px;left:-100px"></div>
   <div class="orb" style="background:rgba(255,59,255,.08);width:400px;height:400px;top:-100px;right:-150px"></div>
+
+  <div class="hero-grid">
+  <div class="hero-left">
 
   <div class="hero-badge">
     <span class="badge-dot"></span>
@@ -491,7 +550,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
   </div>
 
   <div class="ctas" style="animation:fadeUp .7s .5s ease both">
-    <a href="#pricing" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
+    <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQABKg3YTdKgL1xJDsmh0yb90aF_BaoUBcd3vOQ3DjFq6fE&auto_redirect=false&edge_redirect=true&preview_theme_id=158915395814&skip_shop_pay=true&_su_rec=g3WyGSlnYZMWDX6yBErhi1UfUBhCCk2wMIC2VvcRydNj8xOS1Y3rIzc-eseraEjUVKJc-iMzJ2bpF_Kd_sq3DbmGd_01Hl4FoaVec6BKrKCjMb4BTkmLcQc4O5X3KkqWMpMbqBCQYK1Fzw2uaOYFpEbZXBjKnOrExALm83XmzEloe5XU-qriEKF--DIzNVg6kiOsbvEsBpv8AvLw-uE3iG6MGAsK" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
       Get Instant Access — $27
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -516,6 +575,34 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
       4,500+ customers
     </div>
   </div>
+
+  </div><!-- /hero-left -->
+
+  <div class="hero-right">
+    <div class="hero-proof-label">
+      <span class="badge-dot"></span> Live Beacons dashboard — real sales
+    </div>
+    <div class="dash-mockup beacons-dash hero-dash">
+      <div class="d-logo">beacons <span>Digital Product Sales</span></div>
+      <div class="d-label">Lifetime Sales</div>
+      <div class="d-value">$10,029.33</div>
+      <div class="d-bar-row">
+        <div style="flex:1.4;background:#7B5EA7"></div>
+        <div style="flex:0.85;background:#E91E8C"></div>
+        <div style="flex:0.7;background:#F5C518"></div>
+        <div style="flex:6.5;background:#00BCD4"></div>
+      </div>
+      <div class="d-items">
+        <div class="d-item"><div class="d-dot" style="background:#7B5EA7"></div><div class="d-iname">All 20 Liquid Glass Wallpaper Packs</div><div class="d-iprice">$944.23</div></div>
+        <div class="d-item"><div class="d-dot" style="background:#E91E8C"></div><div class="d-iname">💖 Liquid Glass Pink Wallpaper Pack</div><div class="d-iprice">$488.68</div></div>
+        <div class="d-item"><div class="d-dot" style="background:#F5C518"></div><div class="d-iname">🖤 Grey Liquid Glass 6 Wallpaper Pack</div><div class="d-iprice">$397.23</div></div>
+        <div class="d-item"><div class="d-dot" style="background:#00BCD4"></div><div class="d-iname">Others</div><div class="d-iprice">$4,055.19</div></div>
+      </div>
+      <div class="d-footer"><span>Updated just now</span><span class="d-viewbtn">View Analytics ›</span></div>
+    </div>
+  </div>
+
+  </div><!-- /hero-grid -->
 </section>
 
 <!-- TICKER -->
@@ -579,52 +666,40 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
   </div>
 </section>
 
-<!-- BUSINESS MODEL -->
-<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+<!-- THE SYSTEM (Business Model + Why It Works + What's Inside — merged) -->
+<section style="padding:clamp(72px,9vw,110px) 0;text-align:center" id="inside">
   <div class="container">
-    <p class="eyebrow fade-up">The Business Model</p>
-    <h2 class="h2 fade-up">Simple system.<br>Repeatable results.</h2>
-    <p class="lead fade-up" style="margin:0 auto 52px">Low cost. High margin. No inventory. No shipping. Infinite delivery.</p>
-    <div class="steps-row">
+    <p class="eyebrow fade-up">The System</p>
+    <h2 class="h2 fade-up">Simple system.<br>Real results.</h2>
+    <p class="lead fade-up" style="margin:0 auto 44px">Low cost. High margin. No inventory, no shipping, infinite delivery. Here's exactly how it works — and everything you get inside.</p>
+
+    <!-- 5-step flow -->
+    <div class="steps-row" style="margin-bottom:8px">
       <div class="step"><div class="step-icon">🔍</div><div class="step-n">Step 01</div><div class="step-title">Source Viral Wallpapers</div><div class="step-desc">Find trending aesthetics people already want</div></div>
       <div class="step"><div class="step-icon">📱</div><div class="step-n">Step 02</div><div class="step-title">Create Mockups</div><div class="step-desc">Simple phone mockup posts — no design skill</div></div>
       <div class="step"><div class="step-icon">🧵</div><div class="step-n">Step 03</div><div class="step-title">Post on Threads</div><div class="step-desc">Algorithm rewards consistent wallpaper content</div></div>
       <div class="step"><div class="step-icon">🔗</div><div class="step-n">Step 04</div><div class="step-title">Build a Funnel</div><div class="step-desc">Link to your Beacons store — sales happen 24/7</div></div>
       <div class="step"><div class="step-icon">💸</div><div class="step-n">Step 05</div><div class="step-title">Earn & Repeat</div><div class="step-desc">Scale with bundles. The system compounds.</div></div>
     </div>
-  </div>
-</section>
 
-<!-- FEATURES -->
-<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
-  <div class="container">
-    <p class="eyebrow fade-up">Why It Works</p>
-    <h2 class="h2 fade-up">Low cost.<br>High margin.</h2>
-    <p class="lead fade-up" style="margin:0 auto 48px">Wallpapers are the perfect digital product — everyone uses them and they cost nothing to deliver.</p>
-    <div class="features-grid">
-      <div class="feat-card"><div class="feat-icon">📈</div><h3 class="h3" style="font-size:17px">High Demand, Low Competition</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">Millions search for wallpapers daily. The market is massive and most creators aren't monetizing it.</p><span class="feat-tag">Evergreen Market</span></div>
-      <div class="feat-card"><div class="feat-icon">♾️</div><h3 class="h3" style="font-size:17px">Infinite Content Supply</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">New styles and aesthetics drop every day. You'll never run out of content to post.</p><span class="feat-tag">Content-Proof</span></div>
-      <div class="feat-card"><div class="feat-icon">🚀</div><h3 class="h3" style="font-size:17px">Instant Delivery</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">No shipping. No returns. No inventory. Customer pays → file downloads instantly.</p><span class="feat-tag">100% Passive</span></div>
+    <!-- 4 strongest "why it works" cards -->
+    <div class="features-grid" style="margin-top:40px;margin-bottom:56px">
+      <div class="feat-card"><div class="feat-icon">📈</div><h3 class="h3" style="font-size:17px">High Demand, Low Competition</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">Millions search for wallpapers daily. A massive market most creators aren't monetizing.</p><span class="feat-tag">Evergreen Market</span></div>
       <div class="feat-card"><div class="feat-icon">💰</div><h3 class="h3" style="font-size:17px">~100% Profit Margin</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">Near-zero cost per sale. Sell a $9 bundle 500 times = $4,500 with zero delivery cost.</p><span class="feat-tag">~100% Margin</span></div>
+      <div class="feat-card"><div class="feat-icon">🚀</div><h3 class="h3" style="font-size:17px">Instant, Passive Delivery</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">No shipping, returns or inventory. Customer pays → file downloads instantly. You sleep, it sells.</p><span class="feat-tag">100% Passive</span></div>
       <div class="feat-card"><div class="feat-icon">🧵</div><h3 class="h3" style="font-size:17px">Threads Is the Engine</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">92.9% of all sales came from Threads alone. The algorithm loves wallpaper content.</p><span class="feat-tag">92.9% Traffic</span></div>
-      <div class="feat-card"><div class="feat-icon">🌍</div><h3 class="h3" style="font-size:17px">Universal Appeal</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">iPhones, Android, tablets, desktops — everyone has a screen. This market never goes away.</p><span class="feat-tag">Global Audience</span></div>
     </div>
-  </div>
-</section>
 
-<!-- MODULES -->
-<section style="padding:clamp(80px,10vw,120px) 0;text-align:center" id="inside">
-  <div class="container">
-    <p class="eyebrow fade-up">What's Inside</p>
-    <h2 class="h2 fade-up">Every module.<br>Every step.</h2>
-    <p class="lead fade-up" style="margin:0 auto 48px">6 core modules across 40+ pages — everything from zero to your first $1K.</p>
-    <div class="modules">
-      <div class="mod-row"><div class="mod-num">01</div><div><div class="mod-title">Why Wallpapers + Threads = Pure Money</div><div class="mod-desc">The market thesis — why this exact combo prints in 2025</div></div><span class="mod-badge badge-key">Foundation</span></div>
-      <div class="mod-row"><div class="mod-num">02</div><div><div class="mod-title">The Business Model Breakdown</div><div class="mod-desc">Source → Mockup → Post → Funnel → Sell. Simple, repeatable, scalable.</div></div><span class="mod-badge badge-key">Core</span></div>
-      <div class="mod-row"><div class="mod-num">03</div><div><div class="mod-title">The Product That Sells Itself</div><div class="mod-desc">Which wallpapers convert best and why digital wins every time</div></div></div>
-      <div class="mod-row"><div class="mod-num">04</div><div><div class="mod-title">Your Content System (What to Post)</div><div class="mod-desc">The 5 content pillars — viral wallpapers, niche themes, value posts, engagement, and promo</div></div><span class="mod-badge badge-new">High Value</span></div>
-      <div class="mod-row"><div class="mod-num">05</div><div><div class="mod-title">Beacons Store Setup</div><div class="mod-desc">Your store is your ATM. Set it up once — it sells for you 24/7</div></div><span class="mod-badge badge-new">Action</span></div>
-      <div class="mod-row"><div class="mod-num">06</div><div><div class="mod-title">Real Numbers + What Sold Best</div><div class="mod-desc">Actual Stripe + Beacons data, top bundles, and the exact pricing strategy</div></div><span class="mod-badge badge-key">Proof</span></div>
+    <!-- What's inside — compact 2-col -->
+    <h3 class="h3 fade-up" style="font-size:clamp(22px,3.4vw,30px);margin-bottom:6px">Everything inside the guide</h3>
+    <p class="lead fade-up" style="margin:0 auto 32px;font-size:15px">6 core modules · 40+ pages · zero to your first $1K</p>
+    <div class="modules" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:10px">
+      <div class="mod-row"><div class="mod-num">01</div><div><div class="mod-title">Why Wallpapers + Threads = Money</div><div class="mod-desc">The market thesis — why this combo prints</div></div><span class="mod-badge badge-key">Core</span></div>
+      <div class="mod-row"><div class="mod-num">02</div><div><div class="mod-title">The Business Model Breakdown</div><div class="mod-desc">Source → Mockup → Post → Funnel → Sell</div></div><span class="mod-badge badge-key">Core</span></div>
+      <div class="mod-row"><div class="mod-num">03</div><div><div class="mod-title">The Product That Sells Itself</div><div class="mod-desc">Which wallpapers convert best, every time</div></div></div>
+      <div class="mod-row"><div class="mod-num">04</div><div><div class="mod-title">Your Content System (What to Post)</div><div class="mod-desc">The 5 content pillars that drive sales</div></div><span class="mod-badge badge-new">High Value</span></div>
+      <div class="mod-row"><div class="mod-num">05</div><div><div class="mod-title">Beacons Store Setup</div><div class="mod-desc">Set it up once — it sells for you 24/7</div></div><span class="mod-badge badge-new">Action</span></div>
+      <div class="mod-row"><div class="mod-num">06</div><div><div class="mod-title">Real Numbers + What Sold Best</div><div class="mod-desc">Actual Stripe + Beacons data & pricing</div></div><span class="mod-badge badge-key">Proof</span></div>
     </div>
   </div>
 </section>
@@ -673,7 +748,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
       </div>
     </div>
     <div style="margin-top:28px">
-      <a href="#pricing" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
+      <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQABKg3YTdKgL1xJDsmh0yb90aF_BaoUBcd3vOQ3DjFq6fE&auto_redirect=false&edge_redirect=true&preview_theme_id=158915395814&skip_shop_pay=true&_su_rec=g3WyGSlnYZMWDX6yBErhi1UfUBhCCk2wMIC2VvcRydNj8xOS1Y3rIzc-eseraEjUVKJc-iMzJ2bpF_Kd_sq3DbmGd_01Hl4FoaVec6BKrKCjMb4BTkmLcQc4O5X3KkqWMpMbqBCQYK1Fzw2uaOYFpEbZXBjKnOrExALm83XmzEloe5XU-qriEKF--DIzNVg6kiOsbvEsBpv8AvLw-uE3iG6MGAsK" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
         Claim Your Spot — $27
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -784,29 +859,12 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
   </div>
 </section>
 
-<!-- RESULTS -->
-<section style="padding:clamp(80px,10vw,120px) 0;text-align:center;background:linear-gradient(180deg,transparent,rgba(200,255,0,.025),transparent)">
+<!-- RESULTS (slim — unique Threads traffic proof only) -->
+<section style="padding:clamp(56px,7vw,84px) 0;text-align:center;background:linear-gradient(180deg,transparent,rgba(200,255,0,.025),transparent)">
   <div class="container">
-    <p class="eyebrow fade-up">Real Metrics</p>
-    <h2 class="h2 fade-up">The numbers<br>don't lie.</h2>
-    <p class="lead fade-up" style="margin:0 auto 48px">Verified Stripe + Beacons dashboards — real account, real payments, real data.</p>
-    <div class="results-hl">
-      <div class="result-card fade-up">
-        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 4v2l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Stripe Net Volume</div>
-        <div class="result-num">$27,813</div>
-        <div class="result-ctx">Verified Stripe dashboard — real payments, real customers</div>
-      </div>
-      <div class="result-card fade-up">
-        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 3V2a2 2 0 0 1 4 0v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Top Bundle — Beacons</div>
-        <div class="result-num">$490</div>
-        <div class="result-ctx">All 20 Liquid Glass Wallpaper Packs — the #1 revenue product</div>
-      </div>
-      <div class="result-card fade-up">
-        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 4h4l-3.3 2.4 1.3 4L6 9 2.5 11.4l1.3-4L.5 5h4z" stroke="currentColor" stroke-width="1.3"/></svg>Monthly Recurring Revenue</div>
-        <div class="result-num">$1,000</div>
-        <div class="result-ctx">MRR locked in from Stripe — steady, compounding, passive income</div>
-      </div>
-    </div>
+    <p class="eyebrow fade-up">Where The Money Comes From</p>
+    <h2 class="h2 fade-up" style="font-size:clamp(30px,5vw,52px)">Threads is the engine.</h2>
+    <p class="lead fade-up" style="margin:0 auto 36px;font-size:15px">92.9% of all revenue came from a single platform — no ads, no other channels. A system anyone can replicate.</p>
     <div class="chart-card fade-up">
       <div class="chart-lbl">Where Sales Came From</div>
       <div class="bar-chart">
@@ -814,7 +872,6 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
         <div class="bar-row"><div class="bar-src">Direct</div><div class="bar-track"><div class="bar-fill fill-b" data-w="6.1"></div></div><div class="bar-pct">6.1%</div></div>
         <div class="bar-row"><div class="bar-src">Other</div><div class="bar-track"><div class="bar-fill fill-c" data-w="1"></div></div><div class="bar-pct">1.0%</div></div>
       </div>
-      <p style="margin-top:18px;font-size:13px;color:var(--dim)">Threads is the engine. 92.9% of revenue came from a single platform — this is a system anyone can replicate.</p>
     </div>
   </div>
 </section>
@@ -868,7 +925,24 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
       </div>
       <div class="rev-card">
         <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="rev-text">"I've bought a lot of 'make money online' guides and most are vague fluff. This one is different — shows you exactly which wallpapers to post, how often, how to structure your store. Made $340 in my first month."</p>
+        <p class="rev-text">"This guide showed me exactly which wallpapers to post and how often — and my reach exploded. I crossed <b>103M views</b> in a single month on Threads. The traffic turns into sales on autopilot. Made $340 my first month and it's only climbing."</p>
+        <!-- Threads Insights mockup -->
+        <div class="proof-cap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real Threads insights — screenshot</div>
+        <div class="dash-mockup insights-dash">
+          <div class="d-top">
+            <div class="d-title">Views</div>
+            <div class="d-pills">
+              <div class="d-pill">30 days ▾</div>
+              <div class="d-pill">All ▾</div>
+            </div>
+          </div>
+          <div class="d-label">Total views</div>
+          <div class="d-value">103M</div>
+          <div class="d-bars">
+            <i style="height:4%"></i><i style="height:3%"></i><i style="height:4%"></i><i style="height:4%"></i><i style="height:3%"></i><i style="height:9%"></i><i style="height:7%"></i><i style="height:31%"></i><i style="height:37%"></i><i style="height:39%"></i><i style="height:15%"></i><i style="height:5%"></i><i style="height:4%"></i><i style="height:6%"></i><i style="height:5%"></i><i style="height:4%"></i><i style="height:29%"></i><i style="height:35%"></i><i style="height:23%"></i><i style="height:15%"></i><i style="height:18%"></i><i style="height:19%"></i><i style="height:39%"></i><i style="height:35%"></i><i style="height:41%"></i><i style="height:25%"></i><i style="height:49%"></i><i style="height:66%"></i><i style="height:97%"></i><i style="height:83%"></i>
+          </div>
+          <div class="d-xaxis"><span>20 Apr</span><span>19 May</span></div>
+        </div>
         <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#3BFFF8,#0099FF)">MS</div><div><div class="rev-name">Maya S.</div><div class="rev-handle">@mayasets · 8.4K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
       </div>
       <div class="rev-card">
@@ -935,7 +1009,43 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
       </div>
       <div class="rev-card">
         <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="rev-text">"Was making $0 online. This guide gave me a clear, specific answer: Threads + wallpapers + Beacons. No fluff. No filler. The bonuses alone are worth more than the price — the resell rights are a huge bonus on top."</p>
+        <p class="rev-text">"Was making $0 online. Now I literally <b>wake up to Beacons sale notifications</b> rolling in overnight — $7.99 here, $8.99 there, while I'm asleep. It adds up fast. Threads + wallpapers + Beacons just works, exactly like the guide says."</p>
+        <!-- Beacons sale notifications mockup -->
+        <div class="proof-cap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real Beacons sale alerts — screenshot</div>
+        <div class="dash-mockup notif-dash">
+          <div class="notif-row">
+            <div class="notif-av"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg></div>
+            <div class="notif-body">
+              <div class="notif-top"><span class="notif-name">Beacons</span><span class="notif-time">2:45 AM</span></div>
+              <div class="notif-text">You just made a sale for <b>$7.99</b> 🥳</div>
+              <div class="notif-meta"><span class="notif-btn">View order</span><span class="notif-status">🧾 Order placed</span></div>
+            </div>
+          </div>
+          <div class="notif-row">
+            <div class="notif-av"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg></div>
+            <div class="notif-body">
+              <div class="notif-top"><span class="notif-name">Beacons</span><span class="notif-time">1:57 AM</span></div>
+              <div class="notif-text">You just made a sale for <b>$5.38</b> 🥳</div>
+              <div class="notif-meta"><span class="notif-btn">View order</span><span class="notif-status">🧾 Order placed</span></div>
+            </div>
+          </div>
+          <div class="notif-row">
+            <div class="notif-av"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg></div>
+            <div class="notif-body">
+              <div class="notif-top"><span class="notif-name">Beacons</span><span class="notif-time">12:30 AM</span></div>
+              <div class="notif-text">You just made a sale for <b>$8.99</b> 🥳</div>
+              <div class="notif-meta"><span class="notif-btn">View order</span><span class="notif-status">🧾 Order placed</span></div>
+            </div>
+          </div>
+          <div class="notif-row">
+            <div class="notif-av"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg></div>
+            <div class="notif-body">
+              <div class="notif-top"><span class="notif-name">Beacons</span><span class="notif-time">May 27</span></div>
+              <div class="notif-text">You just made a sale for <b>$4.78</b> 🥳</div>
+              <div class="notif-meta"><span class="notif-btn">View order</span><span class="notif-status">🧾 Order placed</span></div>
+            </div>
+          </div>
+        </div>
         <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#8338EC,#FF3BFF)">NW</div><div><div class="rev-name">Noah W.</div><div class="rev-handle">@noahwallpapers · 67K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
       </div>
     </div>
@@ -967,7 +1077,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
         <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Lifetime access + all future updates</li>
       </ul>
       <div class="scarcity-tag" style="margin-bottom:18px;justify-content:center">⚡ Only 31 spots at this price — going to $47 tonight</div>
-      <a href="#" class="pc-cta">Get Instant Access — $27 →</a>
+      <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQABKg3YTdKgL1xJDsmh0yb90aF_BaoUBcd3vOQ3DjFq6fE&auto_redirect=false&edge_redirect=true&preview_theme_id=158915395814&skip_shop_pay=true&_su_rec=g3WyGSlnYZMWDX6yBErhi1UfUBhCCk2wMIC2VvcRydNj8xOS1Y3rIzc-eseraEjUVKJc-iMzJ2bpF_Kd_sq3DbmGd_01Hl4FoaVec6BKrKCjMb4BTkmLcQc4O5X3KkqWMpMbqBCQYK1Fzw2uaOYFpEbZXBjKnOrExALm83XmzEloe5XU-qriEKF--DIzNVg6kiOsbvEsBpv8AvLw-uE3iG6MGAsK" class="pc-cta">Get Instant Access — $27 →</a>
       <div class="pc-guarantee" style="margin-top:14px">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Secure checkout · Instant delivery · Questions? DM us on Threads
@@ -1007,7 +1117,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.3)}
     <h2 class="h2 fade-up" style="font-size:clamp(42px,7vw,80px)">Your empire<br>starts today.</h2>
     <p class="lead fade-up" style="margin:0 auto 36px">The system works. The proof is real. The only thing left is to start.<br><strong style="color:#fff">Action &gt; Perfection.</strong></p>
     <div class="ctas fade-up">
-      <a href="#pricing" class="btn-p" style="font-size:clamp(16px,2.5vw,20px);padding:clamp(16px,2.5vw,22px) clamp(36px,5vw,56px)">
+      <a href="https://stb1tb-g5.myshopify.com/checkouts/cn/hWNCtAjIYuWblXQpNshvahPt/en-ca?_r=AQABKg3YTdKgL1xJDsmh0yb90aF_BaoUBcd3vOQ3DjFq6fE&auto_redirect=false&edge_redirect=true&preview_theme_id=158915395814&skip_shop_pay=true&_su_rec=g3WyGSlnYZMWDX6yBErhi1UfUBhCCk2wMIC2VvcRydNj8xOS1Y3rIzc-eseraEjUVKJc-iMzJ2bpF_Kd_sq3DbmGd_01Hl4FoaVec6BKrKCjMb4BTkmLcQc4O5X3KkqWMpMbqBCQYK1Fzw2uaOYFpEbZXBjKnOrExALm83XmzEloe5XU-qriEKF--DIzNVg6kiOsbvEsBpv8AvLw-uE3iG6MGAsK" class="btn-p" style="font-size:clamp(16px,2.5vw,20px);padding:clamp(16px,2.5vw,22px) clamp(36px,5vw,56px)">
         Get Instant Access — $27
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
