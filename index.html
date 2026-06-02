@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wallpaper Empire — From 0 to $1,000 Selling Digital Wallpapers | Techno Universe</title>
+<meta name="description" content="The exact playbook behind $48,200 in verified revenue and 160K Threads followers. Build your wallpaper empire starting today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --lime:#C8FF00;--pink:#FF3BFF;--cyan:#3BFFF8;--gold:#FFD700;
+  --white:#fff;--dim:rgba(255,255,255,.55);
+  --card:rgba(255,255,255,.04);--border:rgba(255,255,255,.08);--bg:#060608;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+
+/* CANVAS */
+#particle-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4}
+
+/* TOAST */
+#toast{
+  position:fixed;bottom:24px;left:20px;z-index:99999;
+  display:flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,.07) 100%);
+  backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid rgba(255,255,255,.22);border-radius:16px;
+  padding:13px 16px;max-width:300px;min-width:260px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 20px 60px rgba(0,0,0,.5);
+  transform:translateY(120px);opacity:0;
+  transition:transform .55s cubic-bezier(.34,1.56,.64,1),opacity .4s ease;
+  will-change:transform,opacity;
+}
+#toast.visible{transform:translateY(0);opacity:1}
+.t-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:13px;color:#000;flex-shrink:0;border:2px solid rgba(255,255,255,.15)}
+.t-body{flex:1;min-width:0}
+.t-label{font-size:11px;color:var(--dim);margin-bottom:2px}
+.t-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-time{font-size:11px;color:var(--lime);margin-top:2px;font-weight:600}
+.t-close{position:absolute;top:7px;right:8px;background:none;border:none;color:var(--dim);font-size:13px;cursor:pointer;line-height:1;padding:2px 4px}
+.t-close:hover{color:#fff}
+@media(max-width:480px){#toast{left:10px;right:10px;max-width:none;min-width:unset}}
+
+/* PROGRESS */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--lime);z-index:200;width:0%;box-shadow:0 0 8px var(--lime);transition:width .1s linear}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 100%);backdrop-filter:blur(32px) saturate(200%);-webkit-backdrop-filter:blur(32px) saturate(200%);border-bottom:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 4px 24px rgba(0,0,0,.3)}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.02em}
+.nav-logo span{color:var(--lime)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;padding:8px 18px;border-radius:100px;text-decoration:none;transition:transform .15s,box-shadow .15s;white-space:nowrap}
+.nav-cta:hover{transform:scale(1.04);box-shadow:0 0 24px rgba(200,255,0,.5)}
+
+/* GLASS */
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.05) 100%);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -1px 0 rgba(0,0,0,.1),0 8px 32px rgba(0,0,0,.3)}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.sec-pad{padding:clamp(80px,10vw,120px) 0}
+
+/* TYPOGRAPHY */
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+.h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(52px,10vw,120px);line-height:.92;letter-spacing:-.04em}
+.h2{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,64px);line-height:1;letter-spacing:-.03em;margin-bottom:14px}
+.h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(18px,2.5vw,24px);line-height:1.2;margin-bottom:10px}
+.lead{font-size:clamp(15px,2vw,19px);color:var(--dim);line-height:1.6;max-width:580px}
+.text-center{text-align:center}.text-center .lead{margin-left:auto;margin-right:auto}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px clamp(16px,5vw,64px) 60px;overflow:hidden}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .6s ease both}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulseDot 1.5s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero .h1{animation:fadeUp .7s .1s ease both}
+.hero .h1 .grad{display:block;background:linear-gradient(135deg,var(--lime) 0%,#7EFF00 40%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 40px rgba(200,255,0,.35))}
+.hero-sub{font-size:clamp(16px,2.2vw,21px);color:var(--dim);max-width:560px;line-height:1.55;margin:22px auto 0;animation:fadeUp .7s .2s ease both}
+.hero-sub strong{color:#fff}
+
+/* PHONE */
+.phone-scene{position:relative;width:clamp(200px,32vw,300px);margin:44px auto 36px;perspective:1000px;animation:fadeUp .8s .3s ease both}
+.phone-3d{width:100%;animation:float3d 6s ease-in-out infinite;transform-style:preserve-3d;filter:drop-shadow(0 30px 80px rgba(200,255,0,.25)) drop-shadow(0 0 60px rgba(63,255,248,.15))}
+@keyframes float3d{0%,100%{transform:rotateY(-12deg) rotateX(4deg) translateY(0)}33%{transform:rotateY(4deg) rotateX(-3deg) translateY(-18px)}66%{transform:rotateY(-6deg) rotateX(6deg) translateY(-8px)}}
+.phone-shell{background:linear-gradient(160deg,#1a1a2e,#16213e,#0f3460);border-radius:clamp(28px,5vw,42px);padding:clamp(10px,2vw,16px);border:1.5px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 0 0 1px rgba(0,0,0,.5),20px 30px 80px rgba(0,0,0,.7)}
+.phone-screen{border-radius:clamp(20px,3.5vw,32px);overflow:hidden;aspect-ratio:9/19.5;position:relative;background:#000}
+.phone-inner{width:100%;height:100%;background:linear-gradient(160deg,#ff006e,#8338ec,#3a86ff,#06d6a0,#ffbe0b);display:flex;align-items:center;justify-content:center;position:relative}
+.phone-inner::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.2),transparent 60%)}
+.phone-txt{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(14px,3vw,22px);color:#fff;text-align:center;text-shadow:0 2px 20px rgba(0,0,0,.5);position:relative;z-index:1;line-height:1.1}
+.phone-notch{position:absolute;top:clamp(8px,1.5vw,12px);left:50%;transform:translateX(-50%);width:30%;height:clamp(8px,1.5vw,12px);background:#000;border-radius:100px;z-index:2}
+.fbadge{position:absolute;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.05));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 14px;font-family:'Space Grotesk',sans-serif;font-size:clamp(11px,1.5vw,13px);font-weight:700;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 32px rgba(0,0,0,.35)}
+.fbadge-l{left:-20px;top:25%;transform:translateX(-100%);animation:fbl 4s ease-in-out infinite}
+.fbadge-r{right:-20px;top:55%;transform:translateX(100%);animation:fbr 4.5s ease-in-out infinite}
+@keyframes fbl{0%,100%{transform:translateX(-100%) translateY(0)}50%{transform:translateX(-100%) translateY(-8px)}}
+@keyframes fbr{0%,100%{transform:translateX(100%) translateY(0)}50%{transform:translateX(100%) translateY(8px)}}
+.fbadge .bl{color:var(--dim);font-weight:500;font-size:10px;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.06em}
+.fbadge .bv{color:var(--lime)}
+@media(max-width:520px){.fbadge-l,.fbadge-r{display:none}}
+
+/* BUTTONS */
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(15px,2vw,18px);padding:clamp(14px,2vw,18px) clamp(28px,4vw,44px);border-radius:100px;text-decoration:none;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s,box-shadow .2s}
+.btn-p::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-p:hover::before{transform:translateX(100%)}
+.btn-p:hover{transform:scale(1.04) translateY(-2px);box-shadow:0 0 40px rgba(200,255,0,.55),0 16px 40px rgba(0,0,0,.4)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(14px,1.8vw,16px);padding:clamp(14px,2vw,18px) clamp(24px,3vw,36px);border-radius:100px;text-decoration:none;border:1px solid var(--border);transition:border-color .2s,background .2s;cursor:pointer}
+.btn-g:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:22px}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--dim)}
+.trust-item svg{color:var(--lime);flex-shrink:0}
+
+/* TICKER */
+.ticker{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(200,255,0,.03);padding:13px 0}
+.ticker-track{display:flex;animation:ticker 32s linear infinite;width:max-content}
+.t-item{display:flex;align-items:center;gap:10px;padding:0 36px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.t-item .n{color:var(--lime)}
+.t-sep{color:rgba(255,255,255,.2)}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* URGENCY */
+.urgency{display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,32px);flex-wrap:wrap;text-align:center;padding:14px clamp(16px,4vw,48px);background:rgba(200,255,0,.05);border-top:1px solid rgba(200,255,0,.15);border-bottom:1px solid rgba(200,255,0,.15)}
+.urg-txt{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--lime)}
+.cd{display:flex;gap:6px;align-items:center}
+.cd-unit{display:flex;flex-direction:column;align-items:center}
+.cd-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(20px,3vw,28px);line-height:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 12px;min-width:48px;text-align:center}
+.cd-lbl{font-size:10px;color:var(--dim);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+.cd-sep{font-size:24px;font-weight:800;color:var(--lime);margin-bottom:16px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;max-width:900px;margin:0 auto}
+.stat-card{background:var(--bg);padding:clamp(28px,4vw,44px) clamp(20px,3vw,36px);text-align:center;transition:background .2s}
+.stat-card:hover{background:rgba(200,255,0,.04)}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(36px,6vw,60px);letter-spacing:-.04em;line-height:1;color:var(--lime);display:block}
+.stat-lbl{font-size:13px;color:var(--dim);margin-top:8px;line-height:1.4}
+
+/* STEPS */
+.steps-row{display:flex;flex-wrap:wrap;gap:0;justify-content:center;align-items:stretch;max-width:1100px;margin:0 auto}
+.step{flex:1;min-width:150px;max-width:200px;display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 18px;position:relative;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.step.vis{opacity:1;transform:translateY(0)}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-12px;top:40%;font-size:18px;color:var(--lime);opacity:.5}
+@media(max-width:600px){.step:not(:last-child)::after{display:none}.steps-row{flex-direction:column;align-items:center}.step{max-width:100%;width:100%}}
+.step-icon{width:60px;height:60px;border-radius:16px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:26px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.step:hover .step-icon{transform:scale(1.1) translateY(-4px);border-color:rgba(200,255,0,.4);box-shadow:0 8px 32px rgba(200,255,0,.2)}
+.step-n{font-size:11px;font-weight:700;color:var(--lime);letter-spacing:.1em;text-transform:uppercase}
+.step-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;text-align:center;line-height:1.3}
+.step-desc{font-size:12px;color:var(--dim);text-align:center;line-height:1.5}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+.feat-card{background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.03) 100%);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:clamp(22px,3vw,32px);text-align:left;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 4px 20px rgba(0,0,0,.2)}
+.feat-card.vis{opacity:1;transform:translateY(0)}
+.feat-card:hover{border-color:rgba(200,255,0,.28);transform:translateY(-4px) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 20px 56px rgba(0,0,0,.35),0 0 32px rgba(200,255,0,.07)}
+.feat-icon{width:46px;height:46px;border-radius:13px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.15);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px}
+.feat-tag{display:inline-block;margin-top:14px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.2);color:var(--lime);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+
+/* MODULES */
+.modules{display:flex;flex-direction:column;gap:10px;max-width:760px;margin:0 auto}
+.mod-row{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:17px 22px;opacity:0;transform:translateX(-20px);transition:opacity .5s,transform .5s,border-color .2s;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.mod-row.vis{opacity:1;transform:translateX(0)}
+.mod-row:hover{border-color:rgba(200,255,0,.2);background:linear-gradient(135deg,rgba(200,255,0,.04),rgba(255,255,255,.02))}
+.mod-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:12px;color:var(--lime);background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.2);border-radius:7px;padding:4px 9px;flex-shrink:0;min-width:34px;text-align:center}
+.mod-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;flex:1}
+.mod-desc{font-size:12px;color:var(--dim);margin-top:2px}
+.mod-badge{flex-shrink:0;font-size:11px;font-weight:700;padding:3px 9px;border-radius:100px;letter-spacing:.04em;text-transform:uppercase}
+.badge-key{background:rgba(59,255,248,.1);border:1px solid rgba(59,255,248,.2);color:var(--cyan)}
+.badge-new{background:rgba(255,59,255,.1);border:1px solid rgba(255,59,255,.2);color:var(--pink)}
+
+/* VALUE STACK */
+.vs-table{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:0;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.vs-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.07)}
+.vs-row:last-child{border-bottom:none}
+.vs-row.total-row{background:rgba(200,255,0,.06);border-top:1px solid rgba(200,255,0,.2)}
+.vs-row.price-row{background:rgba(200,255,0,.1);border-top:1px solid rgba(200,255,0,.3)}
+.vs-name{font-size:14px;display:flex;align-items:center;gap:10px}
+.vs-emoji{font-size:18px;flex-shrink:0}
+.vs-price{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:15px;flex-shrink:0}
+.vs-price.crossed{text-decoration:line-through;color:rgba(255,255,255,.3);font-size:14px}
+.vs-price.lime{color:var(--lime);font-size:18px}
+.vs-price.big{color:var(--lime);font-size:clamp(28px,4vw,40px)}
+.vs-total-label{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:16px}
+.vs-savings{display:inline-block;background:rgba(200,255,0,.15);border:1px solid rgba(200,255,0,.3);color:var(--lime);font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px;margin-top:6px}
+
+/* BONUSES */
+.bonus-section{padding:clamp(80px,10vw,120px) 0;position:relative;overflow:hidden}
+.bonus-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(200,255,0,.04),transparent);pointer-events:none}
+.bonus-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;max-width:1100px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+@media(max-width:768px){.bonus-grid{grid-template-columns:1fr}}
+.bonus-visual{position:relative}
+.mockup-wrap{position:relative;display:flex;align-items:center;justify-content:center;height:clamp(300px,45vw,440px)}
+/* CSS product mockup */
+.mockup-monitor{position:absolute;width:clamp(200px,30vw,280px);height:clamp(130px,20vw,185px);background:linear-gradient(135deg,#1a1a2e,#16213e);border:3px solid rgba(255,255,255,.15);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;box-shadow:0 24px 80px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.1);z-index:3}
+.monitor-stand{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:60px;height:16px;background:rgba(255,255,255,.08);border-radius:0 0 4px 4px}
+.monitor-base{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);width:90px;height:8px;background:rgba(255,255,255,.06);border-radius:4px}
+.mockup-ipad-l{position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(-8deg);width:clamp(100px,14vw,130px);background:linear-gradient(135deg,#111,#1e3a2f);border:2px solid rgba(255,255,255,.12);border-radius:10px;padding:8px;box-shadow:0 16px 48px rgba(0,0,0,.6);z-index:2;animation:floatL 5s ease-in-out infinite}
+.mockup-ipad-r{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(8deg);width:clamp(100px,14vw,130px);background:linear-gradient(135deg,#1a1a2e,#2d1b4e);border:2px solid rgba(255,255,255,.12);border-radius:10px;padding:8px;box-shadow:0 16px 48px rgba(0,0,0,.6);z-index:2;animation:floatR 5.5s ease-in-out infinite}
+@keyframes floatL{0%,100%{transform:translateY(-50%) rotate(-8deg)}50%{transform:translateY(calc(-50% - 8px)) rotate(-8deg)}}
+@keyframes floatR{0%,100%{transform:translateY(-50%) rotate(8deg)}50%{transform:translateY(calc(-50% - 8px)) rotate(8deg)}}
+.ipad-screen{aspect-ratio:3/4;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(7px,1.2vw,10px);color:#fff;line-height:1.3}
+.monitor-label{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(12px,2vw,16px);color:#fff;line-height:1.2;margin-bottom:6px}
+.monitor-sub{font-size:clamp(7px,1.1vw,9px);color:rgba(255,255,255,.6);line-height:1.4;max-width:180px}
+/* floating book covers */
+.book{position:absolute;border-radius:6px;padding:8px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(6px,1vw,9px);color:#fff;line-height:1.3;box-shadow:0 8px 24px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+.book1{width:clamp(65px,9vw,85px);height:clamp(80px,11vw,100px);top:0;left:12%;background:linear-gradient(135deg,#1a1a2e,#0d0d1a);animation:bookFloat1 4s ease-in-out infinite;z-index:4}
+.book2{width:clamp(65px,9vw,85px);height:clamp(80px,11vw,100px);top:0;left:calc(12% + clamp(70px,10vw,92px));background:linear-gradient(135deg,#1e1e1e,#2a2a2a);animation:bookFloat2 4.5s ease-in-out infinite;z-index:4}
+.book3{width:clamp(65px,9vw,85px);height:clamp(80px,11vw,100px);top:0;right:calc(12% + clamp(70px,10vw,92px));background:linear-gradient(135deg,#1a2e1a,#1e3d1e);animation:bookFloat3 5s ease-in-out infinite;z-index:4}
+.book4{width:clamp(65px,9vw,85px);height:clamp(80px,11vw,100px);top:0;right:12%;background:linear-gradient(135deg,#2e1a1a,#3d1e1e);animation:bookFloat4 4.8s ease-in-out infinite;z-index:4}
+@keyframes bookFloat1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-6px)}}
+@keyframes bookFloat2{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-5deg) translateY(-8px)}}
+@keyframes bookFloat3{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-6px)}}
+@keyframes bookFloat4{0%,100%{transform:rotate(12deg) translateY(0)}50%{transform:rotate(12deg) translateY(-8px)}}
+/* bonus ribbon */
+.bonus-ribbon{position:absolute;top:clamp(32px,6vw,60px);left:18%;z-index:10;background:linear-gradient(135deg,#FFD700,#FFA500);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(8px,1.2vw,11px);padding:5px 12px;border-radius:4px;box-shadow:0 4px 16px rgba(255,165,0,.4);transform:rotate(-10deg);white-space:nowrap}
+/* bonus list */
+.bonus-list{display:flex;flex-direction:column;gap:14px}
+.bonus-item{display:flex;align-items:flex-start;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 18px;opacity:0;transform:translateX(20px);transition:opacity .5s,transform .5s,border-color .2s;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.bonus-item.vis{opacity:1;transform:translateX(0)}
+.bonus-item:hover{border-color:rgba(255,215,0,.25);background:linear-gradient(135deg,rgba(255,215,0,.04),rgba(255,255,255,.02))}
+.bonus-gift{font-size:20px;flex-shrink:0;margin-top:1px}
+.bonus-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;margin-bottom:3px}
+.bonus-desc{font-size:13px;color:var(--dim);line-height:1.5}
+.bonus-val{flex-shrink:0;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:13px;color:var(--gold);margin-top:2px}
+.bonus-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+
+/* RESULTS */
+.results-hl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:900px;margin:0 auto 40px}
+.result-card{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:clamp(22px,3vw,32px);text-align:left;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--lime),var(--cyan))}
+.result-src{font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.result-num{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(30px,5vw,46px);letter-spacing:-.03em;line-height:1;color:var(--lime)}
+.result-ctx{font-size:13px;color:var(--dim);margin-top:7px;line-height:1.5}
+/* bar chart */
+.chart-card{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:clamp(22px,4vw,40px);max-width:700px;margin:0 auto;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+.chart-lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.bar-chart{display:flex;flex-direction:column;gap:12px}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-src{font-size:13px;color:var(--dim);width:72px;flex-shrink:0;text-align:right}
+.bar-track{flex:1;height:12px;background:rgba(255,255,255,.05);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;width:0%;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.fill-a{background:linear-gradient(90deg,var(--lime),#7EFF00)}
+.fill-b{background:rgba(200,255,0,.4)}
+.fill-c{background:rgba(200,255,0,.15)}
+.bar-pct{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;min-width:44px}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+.rev-card{background:linear-gradient(145deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 60%,rgba(255,255,255,.01) 100%);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:clamp(20px,3vw,30px);text-align:left;position:relative;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 32px rgba(0,0,0,.25);opacity:0;transform:translateY(22px);transition:opacity .5s,transform .5s,border-color .25s,box-shadow .25s}
+.rev-card.vis{opacity:1;transform:translateY(0)}
+.rev-card:hover{border-color:rgba(200,255,0,.22);transform:translateY(-3px) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 16px 48px rgba(0,0,0,.35),0 0 24px rgba(200,255,0,.05)}
+.rev-card::before{content:'"';position:absolute;top:-10px;right:18px;font-size:90px;font-family:'Space Grotesk',sans-serif;font-weight:800;color:rgba(200,255,0,.06);line-height:1;pointer-events:none}
+.rev-stars{display:flex;gap:3px;margin-bottom:12px}
+.rev-stars span{color:var(--lime);font-size:13px}
+.rev-text{font-size:14px;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:18px;font-style:italic}
+.rev-author{display:flex;align-items:center;gap:11px}
+.rev-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:13px;color:#000;flex-shrink:0}
+.rev-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px}
+.rev-handle{font-size:11px;color:var(--dim);margin-top:1px}
+.rev-verified{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:11px;color:var(--cyan);font-weight:600;background:rgba(59,255,248,.08);border:1px solid rgba(59,255,248,.18);border-radius:100px;padding:3px 8px;flex-shrink:0}
+.social-proof-bar{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:44px;flex-wrap:wrap}
+.sp-avatars{display:flex}
+.sp-av{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:11px;color:#000;margin-left:-8px}
+.sp-av:first-child{margin-left:0}
+.sp-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:rgba(255,255,255,.9)}
+.sp-text span{color:var(--lime)}
+.sp-stars{color:var(--lime);font-size:14px;letter-spacing:1px}
+
+/* PRICING */
+.pricing-card{max-width:520px;margin:0 auto;background:linear-gradient(145deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,.05) 40%,rgba(200,255,0,.04) 100%);backdrop-filter:blur(32px) saturate(180%);-webkit-backdrop-filter:blur(32px) saturate(180%);border:1px solid rgba(255,255,255,.2);border-radius:28px;padding:clamp(30px,5vw,52px);position:relative;overflow:hidden;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(0,0,0,.1),0 24px 80px rgba(0,0,0,.5),0 0 60px rgba(200,255,0,.06)}
+.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--cyan),var(--pink))}
+.pricing-glow{position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(200,255,0,.08),transparent 70%);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none}
+.pc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,255,0,.1);border:1px solid rgba(200,255,0,.3);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--lime);letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.pc-name{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;margin-bottom:8px}
+.pc-desc{font-size:14px;color:var(--dim);margin-bottom:28px;line-height:1.6}
+.pc-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:6px}
+.pc-old{font-family:'Space Grotesk',sans-serif;font-size:22px;color:rgba(255,255,255,.25);text-decoration:line-through;font-weight:700}
+.pc-new{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(60px,10vw,84px);letter-spacing:-.04em;line-height:1;color:var(--lime)}
+.pc-note{font-size:13px;color:var(--dim);margin-bottom:28px}
+.pc-includes{list-style:none;display:flex;flex-direction:column;gap:11px;text-align:left;margin-bottom:32px}
+.pc-includes li{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.85)}
+.pc-chk{width:20px;height:20px;border-radius:50%;background:rgba(200,255,0,.12);border:1px solid rgba(200,255,0,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pc-chk svg{color:var(--lime)}
+.pc-cta{display:block;width:100%;background:var(--lime);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:18px;padding:18px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;position:relative;overflow:hidden;text-align:center;transition:transform .15s,box-shadow .2s}
+.pc-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:translateX(-100%);transition:transform .5s}
+.pc-cta:hover::before{transform:translateX(100%)}
+.pc-cta:hover{transform:scale(1.02) translateY(-2px);box-shadow:0 0 48px rgba(200,255,0,.55),0 20px 48px rgba(0,0,0,.4)}
+.pc-guarantee{margin-top:18px;font-size:13px;color:var(--dim);display:flex;align-items:center;justify-content:center;gap:6px}
+
+/* FAQ */
+.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:10px;text-align:left}
+.faq-item{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.faq-item.open{border-color:rgba(200,255,0,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 4px 24px rgba(200,255,0,.06)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 22px;cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;user-select:none}
+.faq-icon{width:26px;height:26px;border-radius:8px;background:rgba(200,255,0,.08);border:1px solid rgba(200,255,0,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s;font-size:15px;color:var(--lime);font-weight:400}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(200,255,0,.15)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(0,1,0,1),padding .3s;padding:0 22px;font-size:14px;color:var(--dim);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 18px;transition:max-height .4s cubic-bezier(1,0,1,0)}
+
+/* FINAL CTA */
+.final-cta{padding:clamp(80px,12vw,140px) 0;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(200,255,0,.07),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px clamp(16px,5vw,48px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:14px}
+.footer-logo span{color:var(--lime)}
+footer p{font-size:12px;color:rgba(255,255,255,.3)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+
+/* ORB */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+
+/* DASHBOARD MOCKUPS inside reviews */
+.proof-cap{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--lime);letter-spacing:.04em;text-transform:uppercase;margin:14px 0 7px}
+.proof-cap svg{flex-shrink:0}
+.dash-mockup{border-radius:12px;overflow:hidden;margin:0 0 18px;font-family:'Inter',sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.08);position:relative}
+.dash-mockup::after{content:'';position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(200,255,0,.35);pointer-events:none}
+/* Stripe style */
+.stripe-dash{background:#fff;color:#0a2540;padding:14px 16px}
+.stripe-dash .d-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.stripe-dash .d-logo{font-weight:700;font-size:13px;color:#635BFF;letter-spacing:-.02em}
+.stripe-dash .d-tag{font-size:10px;color:#8898aa;background:#f4f5f7;border-radius:100px;padding:2px 8px}
+.stripe-dash .d-label{font-size:11px;color:#8898aa;font-weight:500;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.stripe-dash .d-value{font-size:clamp(18px,3vw,24px);font-weight:700;color:#1a1f36;letter-spacing:-.03em;margin-bottom:10px;line-height:1}
+.stripe-dash .d-chart{width:100%;height:44px;overflow:visible}
+.stripe-dash .d-footer{font-size:10px;color:#8898aa;margin-top:8px;display:flex;justify-content:space-between}
+.stripe-dash .d-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+.stripe-dash .d-cell{background:#f7f8fa;border-radius:8px;padding:10px 12px}
+.stripe-dash .d-cell .d-label{font-size:10px}
+.stripe-dash .d-cell .d-value{font-size:18px;margin-bottom:0}
+/* Beacons style */
+.beacons-dash{background:#fff;color:#0d0d0d;padding:14px 16px}
+.beacons-dash .d-logo{font-size:12px;font-weight:800;color:#000;letter-spacing:-.02em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.beacons-dash .d-logo span{font-size:10px;background:#f0f0f0;border-radius:100px;padding:2px 8px;font-weight:600;color:#666}
+.beacons-dash .d-label{font-size:11px;color:#888;font-weight:600;margin-bottom:4px}
+.beacons-dash .d-value{font-size:clamp(20px,3.5vw,28px);font-weight:800;color:#0d0d0d;letter-spacing:-.03em;margin-bottom:12px;line-height:1}
+.beacons-dash .d-bar-row{height:8px;border-radius:100px;display:flex;overflow:hidden;gap:2px;margin-bottom:12px}
+.beacons-dash .d-items{display:flex;flex-direction:column;gap:6px}
+.beacons-dash .d-item{display:flex;align-items:center;justify-content:space-between;font-size:11px;gap:8px}
+.beacons-dash .d-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.beacons-dash .d-iname{color:#333;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.beacons-dash .d-iprice{font-weight:700;color:#0d0d0d;flex-shrink:0}
+.beacons-dash .d-footer{margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#999}
+.beacons-dash .d-viewbtn{font-size:10px;font-weight:700;color:#000;border:1px solid #ddd;border-radius:6px;padding:3px 9px;letter-spacing:.02em;text-transform:uppercase}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(200,255,0,.3);border-radius:100px}
+@media(max-width:480px){.pricing-card{padding:26px 18px}.vs-row{padding:13px 16px}}
+
+/* STICKY BAR */
+#sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:9000;background:linear-gradient(90deg,#0a0a0a 0%,#111 100%);border-top:1px solid rgba(200,255,0,.3);padding:10px clamp(12px,3vw,28px);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:0 -4px 32px rgba(0,0,0,.6),0 -1px 0 rgba(200,255,0,.15);transform:translateY(100%);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+#sticky-bar.show{transform:translateY(0)}
+.sb-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sb-fire{font-size:16px}
+.sb-copy{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:rgba(255,255,255,.85)}
+.sb-timer{display:flex;align-items:center;gap:4px;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:15px;color:var(--lime)}
+.sb-sep{color:rgba(200,255,0,.4);font-size:13px;margin:0 1px}
+.sb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--lime);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:13px;padding:9px 20px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .2s;flex-shrink:0}
+.sb-cta:hover{transform:scale(1.04);box-shadow:0 0 20px rgba(200,255,0,.5)}
+.sb-viewers{font-size:11px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:5px;flex-shrink:0}
+.sb-dot{width:6px;height:6px;border-radius:50%;background:#ff4545;animation:pulseDot 1.5s ease-in-out infinite;flex-shrink:0}
+@media(max-width:520px){.sb-copy{display:none}.sb-viewers{display:none}}
+
+/* EXIT POPUP */
+#exit-popup{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
+#exit-popup.show{display:flex}
+.ep-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ep-box{position:relative;z-index:1;background:linear-gradient(145deg,rgba(20,20,20,.97),rgba(10,10,10,.98));border:1px solid rgba(200,255,0,.25);border-radius:24px;padding:clamp(28px,5vw,48px);max-width:480px;width:100%;text-align:center;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 32px 80px rgba(0,0,0,.8),0 0 60px rgba(200,255,0,.06)}
+.ep-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--cyan),var(--pink));border-radius:24px 24px 0 0}
+.ep-emoji{font-size:48px;display:block;margin-bottom:14px}
+.ep-title{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(22px,4vw,30px);letter-spacing:-.03em;margin-bottom:8px}
+.ep-sub{font-size:14px;color:var(--dim);line-height:1.6;margin-bottom:22px}
+.ep-price{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:20px}
+.ep-old{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:rgba(255,255,255,.25);text-decoration:line-through}
+.ep-new{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(42px,7vw,60px);letter-spacing:-.04em;color:var(--lime)}
+.ep-cta{display:block;width:100%;background:var(--lime);color:#000;font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:16px;padding:16px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s,box-shadow .2s;margin-bottom:12px}
+.ep-cta:hover{transform:scale(1.02);box-shadow:0 0 36px rgba(200,255,0,.5)}
+.ep-dismiss{background:none;border:none;color:var(--dim);font-size:13px;cursor:pointer;text-decoration:underline;padding:4px}
+.ep-dismiss:hover{color:#fff}
+.ep-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.07);border:none;color:#fff;width:28px;height:28px;border-radius:50%;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.ep-close:hover{background:rgba(255,255,255,.15)}
+
+/* LIVE VIEWERS */
+.live-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,69,69,.1);border:1px solid rgba(255,69,69,.25);border-radius:100px;padding:5px 14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#ff8080;letter-spacing:.04em;animation:fadeUp .6s .6s ease both;opacity:0}
+.live-badge.vis{opacity:1}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ff4545;animation:pulseDot 1.2s ease-in-out infinite;flex-shrink:0}
+
+/* GUARANTEE */
+.guarantee-wrap{display:flex;align-items:center;gap:18px;background:rgba(59,255,248,.05);border:1px solid rgba(59,255,248,.15);border-radius:16px;padding:18px 22px;max-width:520px;margin:20px auto 0;text-align:left}
+.guarantee-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,rgba(59,255,248,.15),rgba(59,255,248,.05));border:2px solid rgba(59,255,248,.25);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.guarantee-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;margin-bottom:4px;color:#fff}
+.guarantee-desc{font-size:12px;color:var(--dim);line-height:1.55}
+
+/* SCARCITY */
+.scarcity-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,100,0,.12);border:1px solid rgba(255,100,0,.3);border-radius:100px;padding:5px 14px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;color:#ff9555;letter-spacing:.04em;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+<div id="progress"></div>
+
+<!-- EXIT POPUP -->
+<div id="exit-popup">
+  <div class="ep-overlay" id="ep-overlay"></div>
+  <div class="ep-box">
+    <button class="ep-close" id="ep-close">✕</button>
+    <span class="ep-emoji">⚡</span>
+    <h2 class="ep-title">Wait — don't miss this.</h2>
+    <p class="ep-sub">You're this close to the exact system that generated <strong style="color:#fff">$48,200 in verified revenue.</strong> The $27 price won't last.</p>
+    <div class="ep-price">
+      <span class="ep-old">$47</span>
+      <span class="ep-new">$27</span>
+    </div>
+    <a href="#pricing" class="ep-cta" id="ep-cta">Yes — Get Instant Access for $27 →</a>
+    <button class="ep-dismiss" id="ep-dismiss">No thanks, I'll pass on this</button>
+  </div>
+</div>
+
+<!-- STICKY BOTTOM BAR -->
+<div id="sticky-bar">
+  <div class="sb-left">
+    <span class="sb-fire">🔥</span>
+    <span class="sb-copy">Launch price ends in</span>
+    <div class="sb-timer">
+      <span id="sbh">08</span><span class="sb-sep">:</span><span id="sbm">47</span><span class="sb-sep">:</span><span id="sbs">33</span>
+    </div>
+  </div>
+  <div class="sb-viewers">
+    <span class="sb-dot"></span>
+    <span id="sb-vcount">61</span> viewing now
+  </div>
+  <a href="#pricing" class="sb-cta">Get $27 Access →</a>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <button class="t-close" id="t-close">✕</button>
+  <div class="t-avatar" id="t-avatar" style="background:linear-gradient(135deg,#C8FF00,#7EFF00)">AK</div>
+  <div class="t-body">
+    <div class="t-label">Someone just purchased 🔥</div>
+    <div class="t-name" id="t-name">The Wallpaper Empire</div>
+    <div class="t-time" id="t-time">2 minutes ago</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TECHNO<span>UNIVERSE</span></div>
+  <a href="#pricing" class="nav-cta">
+    Get Instant Access
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:80px">
+  <div class="orb" style="background:rgba(200,255,0,.12);width:500px;height:500px;top:-200px;left:-100px"></div>
+  <div class="orb" style="background:rgba(255,59,255,.08);width:400px;height:400px;top:-100px;right:-150px"></div>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Verified — $48,200 in Real Revenue
+  </div>
+
+  <h1 class="h1">
+    THE WALLPAPER
+    <span class="grad">EMPIRE</span>
+  </h1>
+
+  <p class="hero-sub">
+    Build a wallpaper page on Threads, grow to <strong>160K followers</strong>, and hit your <strong>first $1,000 in 60 days</strong> — even starting from zero.
+  </p>
+
+  <!-- Live badge -->
+  <div class="live-badge" id="live-badge" style="margin-top:22px;opacity:0;animation:fadeUp .6s .55s ease both">
+    <span class="live-dot"></span>
+    <span id="live-count">63</span> people viewing this right now
+  </div>
+
+
+  <div class="scarcity-tag" style="animation:fadeUp .7s .42s ease both">
+    ⚡ Only 31 spots left at $27 — price increases to $47 tonight
+  </div>
+
+  <div class="ctas" style="animation:fadeUp .7s .5s ease both">
+    <a href="#pricing" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
+      Get Instant Access — $27
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#proof" class="btn-g">See the proof</a>
+  </div>
+
+  <div class="trust-row" style="animation:fadeUp .7s .5s ease both">
+    <div class="trust-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      $48,200 verified on Stripe
+    </div>
+    <div class="trust-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      No design skills needed
+    </div>
+    <div class="trust-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Instant digital delivery
+    </div>
+    <div class="trust-item">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      4,500+ customers
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="t-item"><span class="n">$48,200</span> Stripe Gross Volume <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$5,160</span> Beacons Lifetime Sales <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">160K</span> Threads Followers <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$1,000</span> Monthly Recurring Revenue <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$27,813</span> Net Volume <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">4,500+</span> Wallpaper Customers <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">92.9%</span> Traffic from Threads <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$48,200</span> Stripe Gross Volume <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$5,160</span> Beacons Lifetime Sales <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">160K</span> Threads Followers <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$1,000</span> Monthly Recurring Revenue <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">$27,813</span> Net Volume <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">4,500+</span> Wallpaper Customers <span class="t-sep">✦</span></div>
+    <div class="t-item"><span class="n">92.9%</span> Traffic from Threads <span class="t-sep">✦</span></div>
+  </div>
+</div>
+
+<!-- URGENCY -->
+<div class="urgency">
+  <div class="urg-txt">🔥 Launch Price — Ends Soon:</div>
+  <div class="cd">
+    <div class="cd-unit"><div class="cd-num" id="cdh">08</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="cdm">47</div><div class="cd-lbl">Mins</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="cds">33</div><div class="cd-lbl">Secs</div></div>
+  </div>
+  <div class="urg-txt" style="color:rgba(255,255,255,.6);font-size:13px">Was $47 → Now only $27</div>
+</div>
+
+<!-- PROOF STATS -->
+<section id="proof" style="padding:clamp(80px,10vw,120px) 0">
+  <div class="container" style="text-align:center">
+    <div class="orb" style="background:rgba(59,255,248,.08);width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.5"></div>
+    <p class="eyebrow fade-up">The Proof</p>
+    <h2 class="h2 fade-up">This isn't theory.<br>It works.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">Verified Stripe + Beacons dashboards. Real payments, real customers. Not a hypothetical.</p>
+    <div class="stats-grid fade-up">
+      <div class="stat-card">
+        <span class="stat-num" data-count="48200" data-prefix="$">$0</span>
+        <div class="stat-lbl">Gross Volume<br>Stripe dashboard</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-count="5160" data-prefix="$">$0</span>
+        <div class="stat-lbl">Beacons Lifetime Sales<br>digital products</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-count="160" data-suffix="K">0K</span>
+        <div class="stat-lbl">Threads Followers<br>100% organic</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" data-count="1000" data-prefix="$">$0</span>
+        <div class="stat-lbl">Monthly Recurring<br>Revenue (MRR)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS MODEL -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+  <div class="container">
+    <p class="eyebrow fade-up">The Business Model</p>
+    <h2 class="h2 fade-up">Simple system.<br>Repeatable results.</h2>
+    <p class="lead fade-up" style="margin:0 auto 52px">Low cost. High margin. No inventory. No shipping. Infinite delivery.</p>
+    <div class="steps-row">
+      <div class="step"><div class="step-icon">🔍</div><div class="step-n">Step 01</div><div class="step-title">Source Viral Wallpapers</div><div class="step-desc">Find trending aesthetics people already want</div></div>
+      <div class="step"><div class="step-icon">📱</div><div class="step-n">Step 02</div><div class="step-title">Create Mockups</div><div class="step-desc">Simple phone mockup posts — no design skill</div></div>
+      <div class="step"><div class="step-icon">🧵</div><div class="step-n">Step 03</div><div class="step-title">Post on Threads</div><div class="step-desc">Algorithm rewards consistent wallpaper content</div></div>
+      <div class="step"><div class="step-icon">🔗</div><div class="step-n">Step 04</div><div class="step-title">Build a Funnel</div><div class="step-desc">Link to your Beacons store — sales happen 24/7</div></div>
+      <div class="step"><div class="step-icon">💸</div><div class="step-n">Step 05</div><div class="step-title">Earn & Repeat</div><div class="step-desc">Scale with bundles. The system compounds.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+  <div class="container">
+    <p class="eyebrow fade-up">Why It Works</p>
+    <h2 class="h2 fade-up">Low cost.<br>High margin.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">Wallpapers are the perfect digital product — everyone uses them and they cost nothing to deliver.</p>
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-icon">📈</div><h3 class="h3" style="font-size:17px">High Demand, Low Competition</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">Millions search for wallpapers daily. The market is massive and most creators aren't monetizing it.</p><span class="feat-tag">Evergreen Market</span></div>
+      <div class="feat-card"><div class="feat-icon">♾️</div><h3 class="h3" style="font-size:17px">Infinite Content Supply</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">New styles and aesthetics drop every day. You'll never run out of content to post.</p><span class="feat-tag">Content-Proof</span></div>
+      <div class="feat-card"><div class="feat-icon">🚀</div><h3 class="h3" style="font-size:17px">Instant Delivery</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">No shipping. No returns. No inventory. Customer pays → file downloads instantly.</p><span class="feat-tag">100% Passive</span></div>
+      <div class="feat-card"><div class="feat-icon">💰</div><h3 class="h3" style="font-size:17px">~100% Profit Margin</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">Near-zero cost per sale. Sell a $9 bundle 500 times = $4,500 with zero delivery cost.</p><span class="feat-tag">~100% Margin</span></div>
+      <div class="feat-card"><div class="feat-icon">🧵</div><h3 class="h3" style="font-size:17px">Threads Is the Engine</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">92.9% of all sales came from Threads alone. The algorithm loves wallpaper content.</p><span class="feat-tag">92.9% Traffic</span></div>
+      <div class="feat-card"><div class="feat-icon">🌍</div><h3 class="h3" style="font-size:17px">Universal Appeal</h3><p style="font-size:13px;color:var(--dim);line-height:1.6">iPhones, Android, tablets, desktops — everyone has a screen. This market never goes away.</p><span class="feat-tag">Global Audience</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center" id="inside">
+  <div class="container">
+    <p class="eyebrow fade-up">What's Inside</p>
+    <h2 class="h2 fade-up">Every module.<br>Every step.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">6 core modules across 40+ pages — everything from zero to your first $1K.</p>
+    <div class="modules">
+      <div class="mod-row"><div class="mod-num">01</div><div><div class="mod-title">Why Wallpapers + Threads = Pure Money</div><div class="mod-desc">The market thesis — why this exact combo prints in 2025</div></div><span class="mod-badge badge-key">Foundation</span></div>
+      <div class="mod-row"><div class="mod-num">02</div><div><div class="mod-title">The Business Model Breakdown</div><div class="mod-desc">Source → Mockup → Post → Funnel → Sell. Simple, repeatable, scalable.</div></div><span class="mod-badge badge-key">Core</span></div>
+      <div class="mod-row"><div class="mod-num">03</div><div><div class="mod-title">The Product That Sells Itself</div><div class="mod-desc">Which wallpapers convert best and why digital wins every time</div></div></div>
+      <div class="mod-row"><div class="mod-num">04</div><div><div class="mod-title">Your Content System (What to Post)</div><div class="mod-desc">The 5 content pillars — viral wallpapers, niche themes, value posts, engagement, and promo</div></div><span class="mod-badge badge-new">High Value</span></div>
+      <div class="mod-row"><div class="mod-num">05</div><div><div class="mod-title">Beacons Store Setup</div><div class="mod-desc">Your store is your ATM. Set it up once — it sells for you 24/7</div></div><span class="mod-badge badge-new">Action</span></div>
+      <div class="mod-row"><div class="mod-num">06</div><div><div class="mod-title">Real Numbers + What Sold Best</div><div class="mod-desc">Actual Stripe + Beacons data, top bundles, and the exact pricing strategy</div></div><span class="mod-badge badge-key">Proof</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE STACK -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+  <div class="container">
+    <p class="eyebrow fade-up">Everything You Get</p>
+    <h2 class="h2 fade-up">If you bought each piece<br>separately, here's the cost.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">You're getting all of this for one low price — today only.</p>
+    <div class="vs-table fade-up">
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">📖</span>The Wallpaper Empire Guide (10 modules, 40+ pages)</div>
+        <div class="vs-price crossed">$49</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">🔥</span>30 Threads Post Hook Templates</div>
+        <div class="vs-price crossed">$19</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">📱</span>10 ChatGPT Mockup Prompts</div>
+        <div class="vs-price crossed">$29</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">💎</span>5 Product Description Templates</div>
+        <div class="vs-price crossed">$15</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">📋</span>60-Day Daily Checklist</div>
+        <div class="vs-price crossed">$9</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-name"><span class="vs-emoji">🚀</span>Lifetime Access + All Future Updates</div>
+        <div class="vs-price lime">Priceless</div>
+      </div>
+      <div class="vs-row total-row">
+        <div class="vs-total-label">Real Value</div>
+        <div class="vs-price crossed" style="font-size:20px;color:rgba(255,255,255,.4)">$121</div>
+      </div>
+      <div class="vs-row price-row">
+        <div>
+          <div class="vs-total-label" style="font-size:clamp(18px,3vw,24px)">Your Price Today</div>
+          <div class="vs-savings">You save $94</div>
+        </div>
+        <div class="vs-price big">$27</div>
+      </div>
+    </div>
+    <div style="margin-top:28px">
+      <a href="#pricing" class="btn-p" style="font-size:clamp(15px,2vw,18px)">
+        Claim Your Spot — $27
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonus-section">
+  <div class="bonus-grid">
+    <!-- Visual mockup -->
+    <div class="bonus-visual fade-up">
+      <div class="mockup-wrap">
+        <!-- floating book covers -->
+        <div class="book book1">FACEBOOK<br>STARTER'S<br>GUIDE</div>
+        <div class="book book2" style="background:linear-gradient(135deg,#1e1e2e,#2d2d3e)">EBOOK<br>COVER<br>TEMPLATES</div>
+        <div class="book book3" style="background:linear-gradient(135deg,#1a2a1a,#2e3e2e)">THE<br>RESELLER'S</div>
+        <div class="book book4" style="background:linear-gradient(135deg,#2a1a2e,#3e2d3e)">CANVA<br>MADE<br>EASY</div>
+        <!-- Central monitor -->
+        <div class="mockup-monitor">
+          <div class="monitor-label">META ADS<br>PLAYBOOK</div>
+          <div class="monitor-sub">The exact setup to understand, track, scale, and troubleshoot your ads</div>
+          <div class="monitor-stand"></div>
+          <div class="monitor-base"></div>
+        </div>
+        <!-- Left tablet -->
+        <div class="mockup-ipad-l">
+          <div class="ipad-screen" style="background:linear-gradient(135deg,#1e3a2f,#2d5a45)">
+            <div>
+              <div style="font-size:clamp(16px,2.5vw,22px);margin-bottom:4px">120</div>
+              <div>DIGITAL<br>PRODUCT<br>MOCK UPS<br>BUNDLE</div>
+            </div>
+          </div>
+        </div>
+        <!-- Right tablet -->
+        <div class="mockup-ipad-r">
+          <div class="ipad-screen" style="background:linear-gradient(135deg,#1a1a2e,#2d1b4e)">
+            <div>
+              <div style="color:var(--lime);margin-bottom:4px">$5/DAY</div>
+              <div>AD<br>CHEATSHEET</div>
+            </div>
+          </div>
+        </div>
+        <!-- Ribbon -->
+        <div class="bonus-ribbon">🎁 BONUS GIFT</div>
+      </div>
+    </div>
+
+    <!-- Bonus list -->
+    <div>
+      <p class="eyebrow fade-up">Exclusive Bonuses</p>
+      <h2 class="h2 fade-up" style="margin-bottom:8px">Plus Get These<br><span style="color:var(--lime)">FREE Bonuses</span></h2>
+      <p style="font-size:16px;font-weight:700;color:var(--gold);margin-bottom:28px" class="fade-up">($497 Value — Included Free Today)</p>
+      <p class="lead fade-up" style="margin-bottom:32px;font-size:14px">When you grab The Wallpaper Empire today, you'll also unlock these exclusive, value-packed bonuses to help you launch faster and look professional from day one — and they come with <strong style="color:#fff">resell rights!</strong></p>
+
+      <div class="bonus-list">
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">The Reseller's Playbook</div><div class="bonus-val">$97</div></div>
+            <div class="bonus-desc">An excellent beginner's guide for selling your digital product organically (no ads needed)</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">Meta Ads Playbook</div><div class="bonus-val">$67</div></div>
+            <div class="bonus-desc">A beginner-friendly breakdown to understand how ads work and what your setup will look like</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">Panic Proof Playbook</div><div class="bonus-val">$47</div></div>
+            <div class="bonus-desc">A flowchart designed to help you decide whether to turn an ad off or give it more budget</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">Ad Tracking Sheet</div><div class="bonus-val">$37</div></div>
+            <div class="bonus-desc">The exact spreadsheet used to keep track of daily ad numbers — most beginners miss this step!</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">$5/Day Ad Cheatsheet</div><div class="bonus-val">$47</div></div>
+            <div class="bonus-desc">Starting on a low budget? This checklist has everything for running profitable ads without spending $20/day</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">Digital Product Mockup Bundle</div><div class="bonus-val">$97</div></div>
+            <div class="bonus-desc">Over 120 different ways to make your product look premium with this Canva template!</div>
+          </div>
+        </div>
+        <div class="bonus-item">
+          <div class="bonus-gift">🎁</div>
+          <div style="flex:1">
+            <div class="bonus-header"><div class="bonus-title">Ebook Cover Templates</div><div class="bonus-val">$47</div></div>
+            <div class="bonus-desc">Make your PDF look professional with these done-for-you cover page templates!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center;background:linear-gradient(180deg,transparent,rgba(200,255,0,.025),transparent)">
+  <div class="container">
+    <p class="eyebrow fade-up">Real Metrics</p>
+    <h2 class="h2 fade-up">The numbers<br>don't lie.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">Verified Stripe + Beacons dashboards — real account, real payments, real data.</p>
+    <div class="results-hl">
+      <div class="result-card fade-up">
+        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 4v2l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Stripe Net Volume</div>
+        <div class="result-num">$27,813</div>
+        <div class="result-ctx">Verified Stripe dashboard — real payments, real customers</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="3" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 3V2a2 2 0 0 1 4 0v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Top Bundle — Beacons</div>
+        <div class="result-num">$490</div>
+        <div class="result-ctx">All 20 Liquid Glass Wallpaper Packs — the #1 revenue product</div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-src"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 4h4l-3.3 2.4 1.3 4L6 9 2.5 11.4l1.3-4L.5 5h4z" stroke="currentColor" stroke-width="1.3"/></svg>Monthly Recurring Revenue</div>
+        <div class="result-num">$1,000</div>
+        <div class="result-ctx">MRR locked in from Stripe — steady, compounding, passive income</div>
+      </div>
+    </div>
+    <div class="chart-card fade-up">
+      <div class="chart-lbl">Where Sales Came From</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-src">Threads</div><div class="bar-track"><div class="bar-fill fill-a" data-w="92.9"></div></div><div class="bar-pct">92.9%</div></div>
+        <div class="bar-row"><div class="bar-src">Direct</div><div class="bar-track"><div class="bar-fill fill-b" data-w="6.1"></div></div><div class="bar-pct">6.1%</div></div>
+        <div class="bar-row"><div class="bar-src">Other</div><div class="bar-track"><div class="bar-fill fill-c" data-w="1"></div></div><div class="bar-pct">1.0%</div></div>
+      </div>
+      <p style="margin-top:18px;font-size:13px;color:var(--dim)">Threads is the engine. 92.9% of revenue came from a single platform — this is a system anyone can replicate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+  <div class="container">
+    <p class="eyebrow fade-up">What People Are Saying</p>
+    <h2 class="h2 fade-up">Real results from<br>real people.</h2>
+    <p class="lead fade-up" style="margin:0 auto 36px">Creators who followed the exact system inside The Wallpaper Empire.</p>
+
+    <div class="social-proof-bar fade-up">
+      <div class="sp-avatars">
+        <div class="sp-av" style="background:linear-gradient(135deg,#C8FF00,#7EFF00)">AK</div>
+        <div class="sp-av" style="background:linear-gradient(135deg,#3BFFF8,#0099FF)">MS</div>
+        <div class="sp-av" style="background:linear-gradient(135deg,#FF3BFF,#FF006E)">JR</div>
+        <div class="sp-av" style="background:linear-gradient(135deg,#FFBE0B,#FF6B35)">TC</div>
+        <div class="sp-av" style="background:linear-gradient(135deg,#8338EC,#FF3BFF)">NW</div>
+      </div>
+      <div>
+        <div class="sp-stars">★★★★★</div>
+        <div class="sp-text"><span>4,500+</span> wallpaper creators already inside</div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"I was completely skeptical — zero followers, zero experience. Three weeks in I hit my first sale, and by day 52 I'd made $1,200. The content system is what made it click. It's not just a guide, it's a full operating system."</p>
+        <!-- Beacons dashboard mockup -->
+        <div class="proof-cap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real Beacons earnings — screenshot</div>
+        <div class="dash-mockup beacons-dash">
+          <div class="d-logo">beacons <span>Digital Product Sales</span></div>
+          <div class="d-label">Lifetime Sales</div>
+          <div class="d-value">$5,160.69</div>
+          <div class="d-bar-row">
+            <div style="flex:1.4;background:#7B5EA7"></div>
+            <div style="flex:1.3;background:#E91E8C"></div>
+            <div style="flex:0.9;background:#F5C518"></div>
+            <div style="flex:8;background:#00BCD4"></div>
+          </div>
+          <div class="d-items">
+            <div class="d-item"><div class="d-dot" style="background:#7B5EA7"></div><div class="d-iname">All 20 Liquid Glass Wallpaper Packs</div><div class="d-iprice">$490.68</div></div>
+            <div class="d-item"><div class="d-dot" style="background:#E91E8C"></div><div class="d-iname">💕 Liquid Glass Pink Wallpaper Pack</div><div class="d-iprice">$476.73</div></div>
+            <div class="d-item"><div class="d-dot" style="background:#F5C518"></div><div class="d-iname">🩶 Grey Liquid Glass 6 Wallpaper Pack</div><div class="d-iprice">$384.89</div></div>
+            <div class="d-item"><div class="d-dot" style="background:#00BCD4"></div><div class="d-iname">Others</div><div class="d-iprice">$3,808.39</div></div>
+          </div>
+          <div class="d-footer"><span>Updated just now</span><span class="d-viewbtn">View Analytics ›</span></div>
+        </div>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#C8FF00,#7EFF00)">AK</div><div><div class="rev-name">Alex K.</div><div class="rev-handle">@alexk.threads · 23K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"I've bought a lot of 'make money online' guides and most are vague fluff. This one is different — shows you exactly which wallpapers to post, how often, how to structure your store. Made $340 in my first month."</p>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#3BFFF8,#0099FF)">MS</div><div><div class="rev-name">Maya S.</div><div class="rev-handle">@mayasets · 8.4K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"Best $27 I've spent this year. The bundles section alone tripled my revenue overnight. I went from $2 individual packs to a $9 bundle and never looked back. The guide pays for itself in your first sale."</p>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#FF3BFF,#FF006E)">JR</div><div><div class="rev-name">Jordan R.</div><div class="rev-handle">@jordanrwalls · 41K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"Set up my Beacons store in one afternoon using this guide. Made my first sale the same day I launched. Now at $780 after 6 weeks. Threads is genuinely underrated for this model and the guide shows you exactly why."</p>
+        <!-- Stripe Net Volume mockup -->
+        <div class="proof-cap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real Stripe payouts — screenshot</div>
+        <div class="dash-mockup stripe-dash">
+          <div class="d-header"><span class="d-logo">stripe</span><span class="d-tag">Oct 2025 – Mar 2026</span></div>
+          <div class="d-grid">
+            <div class="d-cell">
+              <div class="d-label">Net volume</div>
+              <div class="d-value">$27,813</div>
+            </div>
+            <div class="d-cell">
+              <div class="d-label">New customers</div>
+              <div class="d-value" style="font-size:22px">3</div>
+            </div>
+          </div>
+          <svg class="d-chart" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="10" x2="220" y2="10" stroke="#e8ecf0" stroke-width="1"/>
+            <line x1="0" y1="22" x2="220" y2="22" stroke="#e8ecf0" stroke-width="1"/>
+            <line x1="0" y1="34" x2="220" y2="34" stroke="#e8ecf0" stroke-width="1"/>
+            <polyline points="0,42 25,41 50,38 75,20 100,8 125,12 150,11 175,11 220,11" fill="none" stroke="#635BFF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="100" cy="8" r="3" fill="#635BFF"/>
+          </svg>
+          <div class="d-footer"><span>Updated 5 seconds ago</span><span style="color:#635BFF;font-weight:600;font-size:10px">More details</span></div>
+        </div>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#FFBE0B,#FF6B35)">TC</div><div><div class="rev-name">Tyler C.</div><div class="rev-handle">@tylercreates · 12.1K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"What got me was the proof — actual Stripe and Beacons screenshots with real numbers. This wasn't someone guessing how to make money. I bought instantly and I'm so glad. Two months in, this has become my main income."</p>
+        <!-- Stripe Gross Volume + MRR mockup -->
+        <div class="proof-cap"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="#C8FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Real Stripe dashboard — screenshot</div>
+        <div class="dash-mockup stripe-dash">
+          <div class="d-header"><span class="d-logo">stripe</span><span class="d-tag">All time · Monthly</span></div>
+          <div class="d-grid">
+            <div class="d-cell">
+              <div class="d-label">Gross volume</div>
+              <div class="d-value">$48,200</div>
+            </div>
+            <div class="d-cell">
+              <div class="d-label">MRR</div>
+              <div class="d-value">$1,000</div>
+            </div>
+          </div>
+          <svg class="d-chart" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="10" x2="220" y2="10" stroke="#e8ecf0" stroke-width="1"/>
+            <line x1="0" y1="22" x2="220" y2="22" stroke="#e8ecf0" stroke-width="1"/>
+            <line x1="0" y1="34" x2="220" y2="34" stroke="#e8ecf0" stroke-width="1"/>
+            <polyline points="0,43 30,42 55,40 80,28 105,10 130,12 155,11 185,11 220,11" fill="none" stroke="#635BFF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <polyline points="0,43 55,43 80,43 100,20 110,8 130,8 155,8 185,8 220,8" fill="none" stroke="#a8a5ff" stroke-width="1.5" stroke-dasharray="3 2" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="105" cy="10" r="3" fill="#635BFF"/>
+          </svg>
+          <div class="d-footer"><span>Updated 26 seconds ago</span><span style="color:#635BFF;font-weight:600;font-size:10px">More details</span></div>
+        </div>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#06D6A0,#3BFFF8)">PL</div><div><div class="rev-name">Priya L.</div><div class="rev-handle">@priyalwalls · 5.9K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="rev-text">"Was making $0 online. This guide gave me a clear, specific answer: Threads + wallpapers + Beacons. No fluff. No filler. The bonuses alone are worth more than the price — the resell rights are a huge bonus on top."</p>
+        <div class="rev-author"><div class="rev-avatar" style="background:linear-gradient(135deg,#8338EC,#FF3BFF)">NW</div><div><div class="rev-name">Noah W.</div><div class="rev-handle">@noahwallpapers · 67K followers</div></div><div class="rev-verified"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M4.5 0L5.5 3.3H9L6.3 5.4l1 3.1L4.5 6.6 1.7 8.5l1-3.1L0 3.3h3.5z"/></svg>Verified</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center" id="pricing">
+  <div class="container">
+    <p class="eyebrow fade-up">Get the Guide</p>
+    <h2 class="h2 fade-up">One price.<br>Everything included.</h2>
+    <p class="lead fade-up" style="margin:0 auto 48px">No upsells. No monthly fees. No subscriptions. Pay once, own it forever.</p>
+    <div class="pricing-card fade-up">
+      <div class="pricing-glow"></div>
+      <div class="pc-badge"><svg width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><circle cx="4.5" cy="4.5" r="4.5"/></svg>Most Popular</div>
+      <div class="pc-name">The Wallpaper Empire</div>
+      <p class="pc-desc">The complete playbook used to generate $48,200 in verified revenue — plus $497 in exclusive free bonuses.</p>
+      <div class="pc-price">
+        <span class="pc-old">$47</span>
+        <span class="pc-new">$27</span>
+      </div>
+      <p class="pc-note">One-time payment · Instant access · Yours forever</p>
+      <ul class="pc-includes">
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Complete 42-page guide + 6 core modules</li>
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>30 Threads Post Hook Templates ($19 value)</li>
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>10 ChatGPT Mockup Prompts ($29 value)</li>
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>60-Day Daily Checklist + Product Templates</li>
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>🎁 All 7 Bonuses FREE ($497 value) with resell rights</li>
+        <li><div class="pc-chk"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Lifetime access + all future updates</li>
+      </ul>
+      <div class="scarcity-tag" style="margin-bottom:18px;justify-content:center">⚡ Only 31 spots at this price — going to $47 tonight</div>
+      <a href="#" class="pc-cta">Get Instant Access — $27 →</a>
+      <div class="pc-guarantee" style="margin-top:14px">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Secure checkout · Instant delivery · Questions? DM us on Threads
+      </div>
+      <div class="guarantee-wrap">
+        <div class="guarantee-icon">🛡️</div>
+        <div>
+          <div class="guarantee-title">30-Day Satisfaction Promise</div>
+          <div class="guarantee-desc">If you go through the guide and feel it wasn't worth every cent, message us. No hoops, no hassle. We stand behind this 100%.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:clamp(80px,10vw,120px) 0;text-align:center">
+  <div class="container">
+    <p class="eyebrow fade-up">Got Questions?</p>
+    <h2 class="h2 fade-up">Everything you<br>need to know.</h2>
+    <div class="faq-list" style="margin-top:48px">
+      <div class="faq-item"><div class="faq-q">Do I need experience or design skills?<div class="faq-icon">+</div></div><div class="faq-a">None. This is built for complete beginners. No design experience, no coding, no existing following needed. The model is designed to be simple — you source wallpapers that already exist and the guide tells you exactly what to do with them.</div></div>
+      <div class="faq-item"><div class="faq-q">What exactly am I buying?<div class="faq-icon">+</div></div><div class="faq-a">A 42-page digital guide (PDF) covering the entire wallpaper business model, plus 7 exclusive bonus resources ($497 value). Delivered instantly after purchase via Beacons.</div></div>
+      <div class="faq-item"><div class="faq-q">Are these results real?<div class="faq-icon">+</div></div><div class="faq-a">100% real. The guide comes from a live Threads account with 160K followers, $48,200 gross volume on Stripe, and $5,160 in Beacons lifetime digital product sales. Every number comes from verified dashboard screenshots.</div></div>
+      <div class="faq-item"><div class="faq-q">How quickly can I realistically make money?<div class="faq-icon">+</div></div><div class="faq-a">The target is your first $1,000 in 60 days with consistent posting. The fastest way to kill progress is perfectionism — the guide emphasizes speed and action over perfection.</div></div>
+      <div class="faq-item"><div class="faq-q">Why Threads and not TikTok or Instagram?<div class="faq-icon">+</div></div><div class="faq-a">Threads is still in its growth phase, is less saturated, rewards consistent aesthetic content, and has a direct DM funnel that converts. 92.9% of the guide's sales came from Threads alone — the data backs it up.</div></div>
+      <div class="faq-item"><div class="faq-q">What are the resell rights on the bonuses?<div class="faq-icon">+</div></div><div class="faq-a">The 7 bonus resources come with resell rights, meaning you can sell them as your own products and keep 100% of the profit. This is an additional income stream on top of the wallpaper business itself.</div></div>
+      <div class="faq-item"><div class="faq-q">Do I need a big budget to start?<div class="faq-icon">+</div></div><div class="faq-a">No. Beyond this guide, the entire business runs on free platforms — Threads (free), Beacons (free tier), and wallpapers sourced online. You can be live with your first products in under a day.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container" style="text-align:center">
+    <p class="eyebrow fade-up">Ready to Build?</p>
+    <h2 class="h2 fade-up" style="font-size:clamp(42px,7vw,80px)">Your empire<br>starts today.</h2>
+    <p class="lead fade-up" style="margin:0 auto 36px">The system works. The proof is real. The only thing left is to start.<br><strong style="color:#fff">Action &gt; Perfection.</strong></p>
+    <div class="ctas fade-up">
+      <a href="#pricing" class="btn-p" style="font-size:clamp(16px,2.5vw,20px);padding:clamp(16px,2.5vw,22px) clamp(36px,5vw,56px)">
+        Get Instant Access — $27
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="trust-row fade-up" style="margin-top:24px">
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>$48,200 in verified sales</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>$497 in free bonuses</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>4,500+ customers</div>
+      <div class="trust-item"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5L11 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Instant delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TECHNO<span>UNIVERSE</span></div>
+  <p>© 2025 Techno Universe. All rights reserved.</p>
+  <p>Digital product. Instant delivery via Beacons.</p>
+</footer>
+
+<script>
+// PARTICLES
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = innerWidth, H = canvas.height = innerHeight;
+window.addEventListener('resize', () => { W = canvas.width = innerWidth; H = canvas.height = innerHeight; });
+const COLS = ['#C8FF00','#3BFFF8','#FF3BFF','#ffffff'];
+const pts = Array.from({length:110}, () => ({
+  x: Math.random()*W, y: Math.random()*H,
+  vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+  r: Math.random()*1.4+.3, op: Math.random()*.5+.1,
+  life:0, maxLife: Math.random()*300+200,
+  c: COLS[Math.floor(Math.random()*COLS.length)]
+}));
+function drawPts(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p => {
+    p.x+=p.vx; p.y+=p.vy; p.life++;
+    if(p.life>p.maxLife||p.x<0||p.x>W||p.y<0||p.y>H){
+      p.x=Math.random()*W; p.y=Math.random()*H;
+      p.life=0; p.maxLife=Math.random()*300+200;
+    }
+    ctx.save(); ctx.globalAlpha=p.op*Math.sin(p.life/p.maxLife*Math.PI);
+    ctx.fillStyle=p.c; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); ctx.restore();
+  });
+  requestAnimationFrame(drawPts);
+}
+drawPts();
+
+// PROGRESS BAR
+const pbar = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  pbar.style.width = (scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+});
+
+// INTERSECTION OBSERVER
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      // bar chart
+      if(e.target.classList.contains('chart-card')) animateBars();
+    }
+  });
+}, {threshold:.15});
+document.querySelectorAll('.fade-up,.step,.feat-card,.mod-row,.bonus-item,.result-card,.rev-card').forEach((el,i)=>{
+  el.style.transitionDelay = (i%5)*.08+'s';
+  io.observe(el);
+});
+io.observe(document.querySelector('.chart-card'));
+
+// COUNTERS
+let counted=false;
+const sg = document.querySelector('.stats-grid');
+new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting && !counted){
+    counted=true;
+    document.querySelectorAll('[data-count]').forEach(el=>{
+      const target=+el.dataset.count, pfx=el.dataset.prefix||'', sfx=el.dataset.suffix||'';
+      const t0=performance.now();
+      const dur=2000;
+      function tick(now){
+        const p=Math.min((now-t0)/dur,1);
+        const e=1-Math.pow(1-p,3);
+        el.textContent=pfx+Math.floor(e*target).toLocaleString()+sfx;
+        if(p<1) requestAnimationFrame(tick);
+        else el.textContent=pfx+target.toLocaleString()+sfx;
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+},{threshold:.3}).observe(sg);
+
+// BAR CHART
+let barsOk=false;
+function animateBars(){
+  if(barsOk) return; barsOk=true;
+  setTimeout(()=>{
+    document.querySelectorAll('.bar-fill').forEach(b=>{ b.style.width=b.dataset.w+'%'; });
+  },200);
+}
+
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const was=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!was) item.classList.add('open');
+  });
+});
+
+// COUNTDOWN — shared timer across hero urgency bar + sticky bar
+(function(){
+  const key='tu_cd_end';
+  let end=+localStorage.getItem(key)||0;
+  if(!end||end<Date.now()){
+    end=Date.now()+(8*3600+47*60+33)*1000;
+    localStorage.setItem(key,end);
+  }
+  function upd(){
+    const d=Math.max(0,end-Date.now());
+    const h=String(Math.floor(d/3600000)).padStart(2,'0');
+    const m=String(Math.floor(d%3600000/60000)).padStart(2,'0');
+    const s=String(Math.floor(d%60000/1000)).padStart(2,'0');
+    document.getElementById('cdh').textContent=h;
+    document.getElementById('cdm').textContent=m;
+    document.getElementById('cds').textContent=s;
+    document.getElementById('sbh').textContent=h;
+    document.getElementById('sbm').textContent=m;
+    document.getElementById('sbs').textContent=s;
+    if(d>0) setTimeout(upd,1000);
+  }
+  upd();
+})();
+
+// STICKY BAR — shows after scrolling past hero
+(function(){
+  const bar=document.getElementById('sticky-bar');
+  let shown=false;
+  window.addEventListener('scroll',()=>{
+    if(scrollY>500&&!shown){shown=true;bar.classList.add('show');}
+  },{passive:true});
+})();
+
+// LIVE VIEWER COUNT — fluctuates realistically
+(function(){
+  const els=[document.getElementById('live-count'),document.getElementById('sb-vcount')];
+  let base=57+Math.floor(Math.random()*18);
+  function flicker(){
+    base=Math.max(40,Math.min(99,base+(Math.random()<.5?1:-1)*(Math.floor(Math.random()*3)+1)));
+    els.forEach(el=>{if(el)el.textContent=base;});
+    setTimeout(flicker,4000+Math.random()*8000);
+  }
+  flicker();
+})();
+
+// EXIT-INTENT POPUP
+(function(){
+  const popup=document.getElementById('exit-popup');
+  let fired=false;
+  function show(){
+    if(fired||sessionStorage.getItem('ep_shown')) return;
+    fired=true; sessionStorage.setItem('ep_shown','1');
+    popup.classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function hide(){
+    popup.classList.remove('show');
+    document.body.style.overflow='';
+  }
+  document.addEventListener('mouseleave',e=>{if(e.clientY<10) show();});
+  // mobile: show after 40s idle
+  let idleTimer=setTimeout(show,40000);
+  document.addEventListener('touchstart',()=>{clearTimeout(idleTimer);idleTimer=setTimeout(show,40000);},{passive:true});
+  document.getElementById('ep-close').addEventListener('click',hide);
+  document.getElementById('ep-dismiss').addEventListener('click',hide);
+  document.getElementById('ep-overlay').addEventListener('click',hide);
+  document.getElementById('ep-cta').addEventListener('click',hide);
+})();
+
+// PHONE TILT
+const phoneScene = document.querySelector('.phone-scene');
+const phone3d = document.getElementById('phone3d');
+if(phoneScene){
+  phoneScene.addEventListener('mousemove',e=>{
+    const r=phoneScene.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    phone3d.style.animation='none';
+    phone3d.style.transform=`rotateY(${x*25}deg) rotateX(${-y*15}deg)`;
+  });
+  phoneScene.addEventListener('mouseleave',()=>{
+    phone3d.style.animation='float3d 6s ease-in-out infinite';
+    phone3d.style.transform='';
+  });
+}
+
+// TOAST — bulletproof direct-style approach
+const toast = document.getElementById('toast');
+const tAvatar = document.getElementById('t-avatar');
+const tName = document.getElementById('t-name');
+const tTime = document.getElementById('t-time');
+
+const buyers = [
+  {i:'AK',n:'Alex K. from Toronto',  c:'linear-gradient(135deg,#C8FF00,#7EFF00)', m:2},
+  {i:'MS',n:'Maya S. from London',   c:'linear-gradient(135deg,#3BFFF8,#0099FF)', m:5},
+  {i:'JR',n:'Jordan R. from NYC',    c:'linear-gradient(135deg,#FF3BFF,#FF006E)', m:1},
+  {i:'TC',n:'Tyler C. from Sydney',  c:'linear-gradient(135deg,#FFBE0B,#FF6B35)', m:8},
+  {i:'PL',n:'Priya L. from Dubai',   c:'linear-gradient(135deg,#06D6A0,#3BFFF8)', m:3},
+  {i:'NW',n:'Noah W. from LA',       c:'linear-gradient(135deg,#8338EC,#FF3BFF)', m:12},
+  {i:'SR',n:'Sam R. from Chicago',   c:'linear-gradient(135deg,#C8FF00,#3BFFF8)', m:6},
+  {i:'EM',n:'Emma M. from Berlin',   c:'linear-gradient(135deg,#FF3BFF,#3BFFF8)', m:4},
+];
+let bi=0, toastTimer;
+
+function showToast(){
+  const b=buyers[bi%buyers.length]; bi++;
+  tAvatar.textContent=b.i;
+  tAvatar.style.background=b.c;
+  tName.textContent=b.n;
+  tTime.textContent=b.m===1?'just now':`${b.m} minutes ago`;
+  // show
+  toast.classList.add('visible');
+  // hide after 4.5s
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{
+    toast.classList.remove('visible');
+    // next toast in 18-36s
+    setTimeout(showToast, 18000+Math.random()*18000);
+  }, 4500);
+}
+
+document.getElementById('t-close').addEventListener('click',()=>{
+  clearTimeout(toastTimer);
+  toast.classList.remove('visible');
+  setTimeout(showToast, 20000+Math.random()*15000);
+});
+
+// Fire first toast after 2 seconds
+setTimeout(showToast, 2000);
+</script>
+</body>
+</html>
